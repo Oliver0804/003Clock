@@ -1,0 +1,276 @@
+                                      1 ;--------------------------------------------------------
+                                      2 ; File Created by SDCC : free open source ISO C Compiler 
+                                      3 ; Version 4.4.0 #14620 (Mac OS X ppc)
+                                      4 ;--------------------------------------------------------
+                                      5 	.module clock
+                                      6 	.optsdcc -mmcs51 --model-small
+                                      7 	
+                                      8 ;--------------------------------------------------------
+                                      9 ; Public variables in this module
+                                     10 ;--------------------------------------------------------
+                                     11 	.globl _clock_PARM_2
+                                     12 	.globl _clock
+                                     13 	.globl _getTime
+                                     14 ;--------------------------------------------------------
+                                     15 ; special function registers
+                                     16 ;--------------------------------------------------------
+                                     17 	.area RSEG    (ABS,DATA)
+      000000                         18 	.org 0x0000
+                                     19 ;--------------------------------------------------------
+                                     20 ; special function bits
+                                     21 ;--------------------------------------------------------
+                                     22 	.area RSEG    (ABS,DATA)
+      000000                         23 	.org 0x0000
+                                     24 ;--------------------------------------------------------
+                                     25 ; overlayable register banks
+                                     26 ;--------------------------------------------------------
+                                     27 	.area REG_BANK_0	(REL,OVR,DATA)
+      000000                         28 	.ds 8
+                                     29 ;--------------------------------------------------------
+                                     30 ; internal ram data
+                                     31 ;--------------------------------------------------------
+                                     32 	.area DSEG    (DATA)
+                                     33 ;--------------------------------------------------------
+                                     34 ; overlayable items in internal ram
+                                     35 ;--------------------------------------------------------
+                                     36 	.area	OSEG    (OVR,DATA)
+      000000                         37 _clock_PARM_2:
+      000000                         38 	.ds 1
+      000001                         39 _clock_pTimeStr_10000_3:
+      000001                         40 	.ds 3
+      000004                         41 _clock_sloc0_1_0:
+      000004                         42 	.ds 1
+      000005                         43 _clock_sloc1_1_0:
+      000005                         44 	.ds 3
+                                     45 ;--------------------------------------------------------
+                                     46 ; indirectly addressable internal ram data
+                                     47 ;--------------------------------------------------------
+                                     48 	.area ISEG    (DATA)
+                                     49 ;--------------------------------------------------------
+                                     50 ; absolute internal ram data
+                                     51 ;--------------------------------------------------------
+                                     52 	.area IABS    (ABS,DATA)
+                                     53 	.area IABS    (ABS,DATA)
+                                     54 ;--------------------------------------------------------
+                                     55 ; bit data
+                                     56 ;--------------------------------------------------------
+                                     57 	.area BSEG    (BIT)
+                                     58 ;--------------------------------------------------------
+                                     59 ; paged external ram data
+                                     60 ;--------------------------------------------------------
+                                     61 	.area PSEG    (PAG,XDATA)
+                                     62 ;--------------------------------------------------------
+                                     63 ; uninitialized external ram data
+                                     64 ;--------------------------------------------------------
+                                     65 	.area XSEG    (XDATA)
+                                     66 ;--------------------------------------------------------
+                                     67 ; absolute external ram data
+                                     68 ;--------------------------------------------------------
+                                     69 	.area XABS    (ABS,XDATA)
+                                     70 ;--------------------------------------------------------
+                                     71 ; initialized external ram data
+                                     72 ;--------------------------------------------------------
+                                     73 	.area XISEG   (XDATA)
+                                     74 	.area HOME    (CODE)
+                                     75 	.area GSINIT0 (CODE)
+                                     76 	.area GSINIT1 (CODE)
+                                     77 	.area GSINIT2 (CODE)
+                                     78 	.area GSINIT3 (CODE)
+                                     79 	.area GSINIT4 (CODE)
+                                     80 	.area GSINIT5 (CODE)
+                                     81 	.area GSINIT  (CODE)
+                                     82 	.area GSFINAL (CODE)
+                                     83 	.area CSEG    (CODE)
+                                     84 ;--------------------------------------------------------
+                                     85 ; global & static initialisations
+                                     86 ;--------------------------------------------------------
+                                     87 	.area HOME    (CODE)
+                                     88 	.area GSINIT  (CODE)
+                                     89 	.area GSFINAL (CODE)
+                                     90 	.area GSINIT  (CODE)
+                                     91 ;--------------------------------------------------------
+                                     92 ; Home
+                                     93 ;--------------------------------------------------------
+                                     94 	.area HOME    (CODE)
+                                     95 	.area HOME    (CODE)
+                                     96 ;--------------------------------------------------------
+                                     97 ; code
+                                     98 ;--------------------------------------------------------
+                                     99 	.area CSEG    (CODE)
+                                    100 ;------------------------------------------------------------
+                                    101 ;Allocation info for local variables in function 'clock'
+                                    102 ;------------------------------------------------------------
+                                    103 ;isStopwatch               Allocated with name '_clock_PARM_2'
+                                    104 ;pTimeStr                  Allocated with name '_clock_pTimeStr_10000_3'
+                                    105 ;sloc0                     Allocated with name '_clock_sloc0_1_0'
+                                    106 ;sloc1                     Allocated with name '_clock_sloc1_1_0'
+                                    107 ;------------------------------------------------------------
+                                    108 ;	/Users/oliver/code/c/Clock_n76e003/firmware/003Clock/clock.c:3: void clock(STR_TIME_T *pTimeStr, char isStopwatch)
+                                    109 ;	-----------------------------------------
+                                    110 ;	 function clock
+                                    111 ;	-----------------------------------------
+      000000                        112 _clock:
+                           000007   113 	ar7 = 0x07
+                           000006   114 	ar6 = 0x06
+                           000005   115 	ar5 = 0x05
+                           000004   116 	ar4 = 0x04
+                           000003   117 	ar3 = 0x03
+                           000002   118 	ar2 = 0x02
+                           000001   119 	ar1 = 0x01
+                           000000   120 	ar0 = 0x00
+                                    121 ;	/Users/oliver/code/c/Clock_n76e003/firmware/003Clock/clock.c:5: if (pTimeStr->second >= 59)
+      000000 85 82*01         [24]  122 	mov	_clock_pTimeStr_10000_3,dpl
+      000003 85 83*02         [24]  123 	mov	(_clock_pTimeStr_10000_3 + 1),dph
+      000006 85 F0*03         [24]  124 	mov	(_clock_pTimeStr_10000_3 + 2),b
+      000009 12r00r00         [24]  125 	lcall	__gptrget
+      00000C FC               [12]  126 	mov	r4,a
+      00000D BC 3B 00         [24]  127 	cjne	r4,#0x3b,00139$
+      000010                        128 00139$:
+      000010 50 03            [24]  129 	jnc	00140$
+      000012 02r00r9C         [24]  130 	ljmp	00111$
+      000015                        131 00140$:
+                                    132 ;	/Users/oliver/code/c/Clock_n76e003/firmware/003Clock/clock.c:7: pTimeStr->second = 0;
+      000015 85*01 82         [24]  133 	mov	dpl,_clock_pTimeStr_10000_3
+      000018 85*02 83         [24]  134 	mov	dph,(_clock_pTimeStr_10000_3 + 1)
+      00001B 85*03 F0         [24]  135 	mov	b,(_clock_pTimeStr_10000_3 + 2)
+      00001E E4               [12]  136 	clr	a
+      00001F 12r00r00         [24]  137 	lcall	__gptrput
+                                    138 ;	/Users/oliver/code/c/Clock_n76e003/firmware/003Clock/clock.c:8: if ((pTimeStr->minute >= 59 && isStopwatch == 0) || (pTimeStr->minute >= 99 && isStopwatch == 1))
+      000022 04               [12]  139 	inc	a
+      000023 25*01            [12]  140 	add	a, _clock_pTimeStr_10000_3
+      000025 F9               [12]  141 	mov	r1,a
+      000026 E4               [12]  142 	clr	a
+      000027 35*02            [12]  143 	addc	a, (_clock_pTimeStr_10000_3 + 1)
+      000029 FA               [12]  144 	mov	r2,a
+      00002A AB*03            [24]  145 	mov	r3,(_clock_pTimeStr_10000_3 + 2)
+      00002C 89 82            [24]  146 	mov	dpl,r1
+      00002E 8A 83            [24]  147 	mov	dph,r2
+      000030 8B F0            [24]  148 	mov	b,r3
+      000032 12r00r00         [24]  149 	lcall	__gptrget
+      000035 F8               [12]  150 	mov	r0,a
+      000036 B8 3B 00         [24]  151 	cjne	r0,#0x3b,00141$
+      000039                        152 00141$:
+      000039 40 04            [24]  153 	jc	00109$
+      00003B E5*00            [12]  154 	mov	a,_clock_PARM_2
+      00003D 60 0A            [24]  155 	jz	00104$
+      00003F                        156 00109$:
+      00003F B8 63 00         [24]  157 	cjne	r0,#0x63,00144$
+      000042                        158 00144$:
+      000042 40 4D            [24]  159 	jc	00105$
+      000044 74 01            [12]  160 	mov	a,#0x01
+      000046 B5*00 48         [24]  161 	cjne	a,_clock_PARM_2,00105$
+      000049                        162 00104$:
+                                    163 ;	/Users/oliver/code/c/Clock_n76e003/firmware/003Clock/clock.c:10: pTimeStr->minute = 0;
+      000049 89 82            [24]  164 	mov	dpl,r1
+      00004B 8A 83            [24]  165 	mov	dph,r2
+      00004D 8B F0            [24]  166 	mov	b,r3
+      00004F E4               [12]  167 	clr	a
+      000050 12r00r00         [24]  168 	lcall	__gptrput
+                                    169 ;	/Users/oliver/code/c/Clock_n76e003/firmware/003Clock/clock.c:11: if (pTimeStr->hour >= 23)
+      000053 74 02            [12]  170 	mov	a,#0x02
+      000055 25*01            [12]  171 	add	a, _clock_pTimeStr_10000_3
+      000057 F5*05            [12]  172 	mov	_clock_sloc1_1_0,a
+      000059 E4               [12]  173 	clr	a
+      00005A 35*02            [12]  174 	addc	a, (_clock_pTimeStr_10000_3 + 1)
+      00005C F5*06            [12]  175 	mov	(_clock_sloc1_1_0 + 1),a
+      00005E 85*03*07         [24]  176 	mov	(_clock_sloc1_1_0 + 2),(_clock_pTimeStr_10000_3 + 2)
+      000061 85*05 82         [24]  177 	mov	dpl,_clock_sloc1_1_0
+      000064 85*06 83         [24]  178 	mov	dph,(_clock_sloc1_1_0 + 1)
+      000067 85*07 F0         [24]  179 	mov	b,(_clock_sloc1_1_0 + 2)
+      00006A 12r00r00         [24]  180 	lcall	__gptrget
+      00006D F5*04            [12]  181 	mov	_clock_sloc0_1_0,a
+      00006F C3               [12]  182 	clr	c
+      000070 94 17            [12]  183 	subb	a,#0x17
+      000072 40 0D            [24]  184 	jc	00102$
+                                    185 ;	/Users/oliver/code/c/Clock_n76e003/firmware/003Clock/clock.c:12: pTimeStr->hour = 0;
+      000074 85*05 82         [24]  186 	mov	dpl,_clock_sloc1_1_0
+      000077 85*06 83         [24]  187 	mov	dph,(_clock_sloc1_1_0 + 1)
+      00007A 85*07 F0         [24]  188 	mov	b,(_clock_sloc1_1_0 + 2)
+      00007D E4               [12]  189 	clr	a
+      00007E 02r00r00         [24]  190 	ljmp	__gptrput
+      000081                        191 00102$:
+                                    192 ;	/Users/oliver/code/c/Clock_n76e003/firmware/003Clock/clock.c:14: pTimeStr->hour = pTimeStr->hour + 1;
+      000081 AF*04            [24]  193 	mov	r7,_clock_sloc0_1_0
+      000083 0F               [12]  194 	inc	r7
+      000084 85*05 82         [24]  195 	mov	dpl,_clock_sloc1_1_0
+      000087 85*06 83         [24]  196 	mov	dph,(_clock_sloc1_1_0 + 1)
+      00008A 85*07 F0         [24]  197 	mov	b,(_clock_sloc1_1_0 + 2)
+      00008D EF               [12]  198 	mov	a,r7
+      00008E 02r00r00         [24]  199 	ljmp	__gptrput
+      000091                        200 00105$:
+                                    201 ;	/Users/oliver/code/c/Clock_n76e003/firmware/003Clock/clock.c:17: pTimeStr->minute = pTimeStr->minute + 1;
+      000091 08               [12]  202 	inc	r0
+      000092 89 82            [24]  203 	mov	dpl,r1
+      000094 8A 83            [24]  204 	mov	dph,r2
+      000096 8B F0            [24]  205 	mov	b,r3
+      000098 E8               [12]  206 	mov	a,r0
+      000099 02r00r00         [24]  207 	ljmp	__gptrput
+      00009C                        208 00111$:
+                                    209 ;	/Users/oliver/code/c/Clock_n76e003/firmware/003Clock/clock.c:20: pTimeStr->second = pTimeStr->second + 1;
+      00009C 0C               [12]  210 	inc	r4
+      00009D 85*01 82         [24]  211 	mov	dpl,_clock_pTimeStr_10000_3
+      0000A0 85*02 83         [24]  212 	mov	dph,(_clock_pTimeStr_10000_3 + 1)
+      0000A3 85*03 F0         [24]  213 	mov	b,(_clock_pTimeStr_10000_3 + 2)
+      0000A6 EC               [12]  214 	mov	a,r4
+                                    215 ;	/Users/oliver/code/c/Clock_n76e003/firmware/003Clock/clock.c:21: }
+      0000A7 02r00r00         [24]  216 	ljmp	__gptrput
+                                    217 ;------------------------------------------------------------
+                                    218 ;Allocation info for local variables in function 'getTime'
+                                    219 ;------------------------------------------------------------
+                                    220 ;pTimeStr                  Allocated to registers r5 r6 r7 
+                                    221 ;time_int                  Allocated to registers 
+                                    222 ;------------------------------------------------------------
+                                    223 ;	/Users/oliver/code/c/Clock_n76e003/firmware/003Clock/clock.c:23: inline int getTime(STR_TIME_T *pTimeStr)
+                                    224 ;	-----------------------------------------
+                                    225 ;	 function getTime
+                                    226 ;	-----------------------------------------
+      0000AA                        227 _getTime:
+      0000AA AD 82            [24]  228 	mov	r5, dpl
+      0000AC AE 83            [24]  229 	mov	r6, dph
+      0000AE AF F0            [24]  230 	mov	r7, b
+                                    231 ;	/Users/oliver/code/c/Clock_n76e003/firmware/003Clock/clock.c:27: time_int = (int)pTimeStr->hour * 100 + pTimeStr->minute;
+      0000B0 74 02            [12]  232 	mov	a,#0x02
+      0000B2 2D               [12]  233 	add	a, r5
+      0000B3 FA               [12]  234 	mov	r2,a
+      0000B4 E4               [12]  235 	clr	a
+      0000B5 3E               [12]  236 	addc	a, r6
+      0000B6 FB               [12]  237 	mov	r3,a
+      0000B7 8F 04            [24]  238 	mov	ar4,r7
+      0000B9 8A 82            [24]  239 	mov	dpl,r2
+      0000BB 8B 83            [24]  240 	mov	dph,r3
+      0000BD 8C F0            [24]  241 	mov	b,r4
+      0000BF 12r00r00         [24]  242 	lcall	__gptrget
+      0000C2 FA               [12]  243 	mov	r2,a
+      0000C3 8A*00            [24]  244 	mov	__mulint_PARM_2,r2
+      0000C5 75*01 00         [24]  245 	mov	(__mulint_PARM_2 + 1),#0x00
+      0000C8 90 00 64         [24]  246 	mov	dptr,#0x0064
+      0000CB C0 07            [24]  247 	push	ar7
+      0000CD C0 06            [24]  248 	push	ar6
+      0000CF C0 05            [24]  249 	push	ar5
+      0000D1 12r00r00         [24]  250 	lcall	__mulint
+      0000D4 AB 82            [24]  251 	mov	r3, dpl
+      0000D6 AC 83            [24]  252 	mov	r4, dph
+      0000D8 D0 05            [24]  253 	pop	ar5
+      0000DA D0 06            [24]  254 	pop	ar6
+      0000DC D0 07            [24]  255 	pop	ar7
+      0000DE 0D               [12]  256 	inc	r5
+      0000DF BD 00 01         [24]  257 	cjne	r5,#0x00,00103$
+      0000E2 0E               [12]  258 	inc	r6
+      0000E3                        259 00103$:
+      0000E3 8D 82            [24]  260 	mov	dpl,r5
+      0000E5 8E 83            [24]  261 	mov	dph,r6
+      0000E7 8F F0            [24]  262 	mov	b,r7
+      0000E9 12r00r00         [24]  263 	lcall	__gptrget
+      0000EC 7F 00            [12]  264 	mov	r7,#0x00
+      0000EE 2B               [12]  265 	add	a, r3
+      0000EF F5 82            [12]  266 	mov	dpl,a
+      0000F1 EF               [12]  267 	mov	a,r7
+      0000F2 3C               [12]  268 	addc	a, r4
+      0000F3 F5 83            [12]  269 	mov	dph,a
+                                    270 ;	/Users/oliver/code/c/Clock_n76e003/firmware/003Clock/clock.c:29: return time_int;
+                                    271 ;	/Users/oliver/code/c/Clock_n76e003/firmware/003Clock/clock.c:30: }
+      0000F5 22               [24]  272 	ret
+                                    273 	.area CSEG    (CODE)
+                                    274 	.area CONST   (CODE)
+                                    275 	.area XINIT   (CODE)
+                                    276 	.area CABS    (ABS,CODE)

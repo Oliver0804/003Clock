@@ -1,0 +1,1438 @@
+                                      1 ;--------------------------------------------------------
+                                      2 ; File Created by SDCC : free open source ISO C Compiler 
+                                      3 ; Version 4.4.0 #14620 (Mac OS X ppc)
+                                      4 ;--------------------------------------------------------
+                                      5 	.module PT6961
+                                      6 	.optsdcc -mmcs51 --model-small
+                                      7 	
+                                      8 ;--------------------------------------------------------
+                                      9 ; Public variables in this module
+                                     10 ;--------------------------------------------------------
+                                     11 	.globl _u8segments
+                                     12 	.globl _MOSI
+                                     13 	.globl _P00
+                                     14 	.globl _MISO
+                                     15 	.globl _P01
+                                     16 	.globl _RXD_1
+                                     17 	.globl _P02
+                                     18 	.globl _P03
+                                     19 	.globl _STADC
+                                     20 	.globl _P04
+                                     21 	.globl _P05
+                                     22 	.globl _TXD
+                                     23 	.globl _P06
+                                     24 	.globl _RXD
+                                     25 	.globl _P07
+                                     26 	.globl _IT0
+                                     27 	.globl _IE0
+                                     28 	.globl _IT1
+                                     29 	.globl _IE1
+                                     30 	.globl _TR0
+                                     31 	.globl _TF0
+                                     32 	.globl _TR1
+                                     33 	.globl _TF1
+                                     34 	.globl _P10
+                                     35 	.globl _P11
+                                     36 	.globl _P12
+                                     37 	.globl _SCL
+                                     38 	.globl _P13
+                                     39 	.globl _SDA
+                                     40 	.globl _P14
+                                     41 	.globl _P15
+                                     42 	.globl _TXD_1
+                                     43 	.globl _P16
+                                     44 	.globl _P17
+                                     45 	.globl _RI
+                                     46 	.globl _TI
+                                     47 	.globl _RB8
+                                     48 	.globl _TB8
+                                     49 	.globl _REN
+                                     50 	.globl _SM2
+                                     51 	.globl _SM1
+                                     52 	.globl _FE
+                                     53 	.globl _SM0
+                                     54 	.globl _P20
+                                     55 	.globl _EX0
+                                     56 	.globl _ET0
+                                     57 	.globl _EX1
+                                     58 	.globl _ET1
+                                     59 	.globl _ES
+                                     60 	.globl _EBOD
+                                     61 	.globl _EADC
+                                     62 	.globl _EA
+                                     63 	.globl _P30
+                                     64 	.globl _PX0
+                                     65 	.globl _PT0
+                                     66 	.globl _PX1
+                                     67 	.globl _PT1
+                                     68 	.globl _PS
+                                     69 	.globl _PBOD
+                                     70 	.globl _PADC
+                                     71 	.globl _I2CPX
+                                     72 	.globl _AA
+                                     73 	.globl _SI
+                                     74 	.globl _STO
+                                     75 	.globl _STA
+                                     76 	.globl _I2CEN
+                                     77 	.globl _CM_RL2
+                                     78 	.globl _TR2
+                                     79 	.globl _TF2
+                                     80 	.globl _P
+                                     81 	.globl _OV
+                                     82 	.globl _RS0
+                                     83 	.globl _RS1
+                                     84 	.globl _F0
+                                     85 	.globl _AC
+                                     86 	.globl _CY
+                                     87 	.globl _CLRPWM
+                                     88 	.globl _PWMF
+                                     89 	.globl _LOAD
+                                     90 	.globl _PWMRUN
+                                     91 	.globl _ADCHS0
+                                     92 	.globl _ADCHS1
+                                     93 	.globl _ADCHS2
+                                     94 	.globl _ADCHS3
+                                     95 	.globl _ETGSEL0
+                                     96 	.globl _ETGSEL1
+                                     97 	.globl _ADCS
+                                     98 	.globl _ADCF
+                                     99 	.globl _RI_1
+                                    100 	.globl _TI_1
+                                    101 	.globl _RB8_1
+                                    102 	.globl _TB8_1
+                                    103 	.globl _REN_1
+                                    104 	.globl _SM2_1
+                                    105 	.globl _SM1_1
+                                    106 	.globl _FE_1
+                                    107 	.globl _SM0_1
+                                    108 	.globl _EIPH1
+                                    109 	.globl _EIP1
+                                    110 	.globl _PMD
+                                    111 	.globl _PMEN
+                                    112 	.globl _PDTCNT
+                                    113 	.globl _PDTEN
+                                    114 	.globl _SCON_1
+                                    115 	.globl _EIPH
+                                    116 	.globl _AINDIDS
+                                    117 	.globl _SPDR
+                                    118 	.globl _SPSR
+                                    119 	.globl _SPCR2
+                                    120 	.globl _SPCR
+                                    121 	.globl _CAPCON4
+                                    122 	.globl _CAPCON3
+                                    123 	.globl _B
+                                    124 	.globl _EIP
+                                    125 	.globl _C2H
+                                    126 	.globl _C2L
+                                    127 	.globl _PIF
+                                    128 	.globl _PIPEN
+                                    129 	.globl _PINEN
+                                    130 	.globl _PICON
+                                    131 	.globl _ADCCON0
+                                    132 	.globl _C1H
+                                    133 	.globl _C1L
+                                    134 	.globl _C0H
+                                    135 	.globl _C0L
+                                    136 	.globl _ADCDLY
+                                    137 	.globl _ADCCON2
+                                    138 	.globl _ADCCON1
+                                    139 	.globl _ACC
+                                    140 	.globl _PWMCON1
+                                    141 	.globl _PIOCON0
+                                    142 	.globl _PWM3L
+                                    143 	.globl _PWM2L
+                                    144 	.globl _PWM1L
+                                    145 	.globl _PWM0L
+                                    146 	.globl _PWMPL
+                                    147 	.globl _PWMCON0
+                                    148 	.globl _FBD
+                                    149 	.globl _PNP
+                                    150 	.globl _PWM3H
+                                    151 	.globl _PWM2H
+                                    152 	.globl _PWM1H
+                                    153 	.globl _PWM0H
+                                    154 	.globl _PWMPH
+                                    155 	.globl _PSW
+                                    156 	.globl _ADCMPH
+                                    157 	.globl _ADCMPL
+                                    158 	.globl _PWM5L
+                                    159 	.globl _TH2
+                                    160 	.globl _PWM4L
+                                    161 	.globl _TL2
+                                    162 	.globl _RCMP2H
+                                    163 	.globl _RCMP2L
+                                    164 	.globl _T2MOD
+                                    165 	.globl _T2CON
+                                    166 	.globl _TA
+                                    167 	.globl _PIOCON1
+                                    168 	.globl _RH3
+                                    169 	.globl _PWM5H
+                                    170 	.globl _RL3
+                                    171 	.globl _PWM4H
+                                    172 	.globl _T3CON
+                                    173 	.globl _ADCRH
+                                    174 	.globl _ADCRL
+                                    175 	.globl _I2ADDR
+                                    176 	.globl _I2CON
+                                    177 	.globl _I2TOC
+                                    178 	.globl _I2CLK
+                                    179 	.globl _I2STAT
+                                    180 	.globl _I2DAT
+                                    181 	.globl _SADDR_1
+                                    182 	.globl _SADEN_1
+                                    183 	.globl _SADEN
+                                    184 	.globl _IP
+                                    185 	.globl _PWMINTC
+                                    186 	.globl _IPH
+                                    187 	.globl _P2S
+                                    188 	.globl _P1SR
+                                    189 	.globl _P1M2
+                                    190 	.globl _P1S
+                                    191 	.globl _P1M1
+                                    192 	.globl _P0SR
+                                    193 	.globl _P0M2
+                                    194 	.globl _P0S
+                                    195 	.globl _P0M1
+                                    196 	.globl _P3
+                                    197 	.globl _IAPCN
+                                    198 	.globl _IAPFD
+                                    199 	.globl _P3SR
+                                    200 	.globl _P3M2
+                                    201 	.globl _P3S
+                                    202 	.globl _P3M1
+                                    203 	.globl _BODCON1
+                                    204 	.globl _WDCON
+                                    205 	.globl _SADDR
+                                    206 	.globl _IE
+                                    207 	.globl _IAPAH
+                                    208 	.globl _IAPAL
+                                    209 	.globl _IAPUEN
+                                    210 	.globl _IAPTRG
+                                    211 	.globl _BODCON0
+                                    212 	.globl _AUXR1
+                                    213 	.globl _P2
+                                    214 	.globl _CHPCON
+                                    215 	.globl _EIE1
+                                    216 	.globl _EIE
+                                    217 	.globl _SBUF_1
+                                    218 	.globl _SBUF
+                                    219 	.globl _SCON
+                                    220 	.globl _CKEN
+                                    221 	.globl _CKSWT
+                                    222 	.globl _CKDIV
+                                    223 	.globl _CAPCON2
+                                    224 	.globl _CAPCON1
+                                    225 	.globl _CAPCON0
+                                    226 	.globl _SFRS
+                                    227 	.globl _P1
+                                    228 	.globl _WKCON
+                                    229 	.globl _CKCON
+                                    230 	.globl _TH1
+                                    231 	.globl _TH0
+                                    232 	.globl _TL1
+                                    233 	.globl _TL0
+                                    234 	.globl _TMOD
+                                    235 	.globl _TCON
+                                    236 	.globl _PCON
+                                    237 	.globl _RWK
+                                    238 	.globl _RCTRIM1
+                                    239 	.globl _RCTRIM0
+                                    240 	.globl _DPH
+                                    241 	.globl _DPL
+                                    242 	.globl _SP
+                                    243 	.globl _P0
+                                    244 	.globl _pt6961_setNumberFade_PARM_2
+                                    245 	.globl _pt6961_setNumber_PARM_2
+                                    246 	.globl _pt6961_writeBit
+                                    247 	.globl _pt6961_writeByte
+                                    248 	.globl _pt6961_writeCommand
+                                    249 	.globl _pt6961_clear
+                                    250 	.globl _pt6961_setBrightness
+                                    251 	.globl _pt6961_init
+                                    252 	.globl _pt6961_setNumber
+                                    253 	.globl _pt6961_setNumberFade
+                                    254 ;--------------------------------------------------------
+                                    255 ; special function registers
+                                    256 ;--------------------------------------------------------
+                                    257 	.area RSEG    (ABS,DATA)
+      000000                        258 	.org 0x0000
+                           000080   259 _P0	=	0x0080
+                           000081   260 _SP	=	0x0081
+                           000082   261 _DPL	=	0x0082
+                           000083   262 _DPH	=	0x0083
+                           000084   263 _RCTRIM0	=	0x0084
+                           000085   264 _RCTRIM1	=	0x0085
+                           000086   265 _RWK	=	0x0086
+                           000087   266 _PCON	=	0x0087
+                           000088   267 _TCON	=	0x0088
+                           000089   268 _TMOD	=	0x0089
+                           00008A   269 _TL0	=	0x008a
+                           00008B   270 _TL1	=	0x008b
+                           00008C   271 _TH0	=	0x008c
+                           00008D   272 _TH1	=	0x008d
+                           00008E   273 _CKCON	=	0x008e
+                           00008F   274 _WKCON	=	0x008f
+                           000090   275 _P1	=	0x0090
+                           000091   276 _SFRS	=	0x0091
+                           000092   277 _CAPCON0	=	0x0092
+                           000093   278 _CAPCON1	=	0x0093
+                           000094   279 _CAPCON2	=	0x0094
+                           000095   280 _CKDIV	=	0x0095
+                           000096   281 _CKSWT	=	0x0096
+                           000097   282 _CKEN	=	0x0097
+                           000098   283 _SCON	=	0x0098
+                           000099   284 _SBUF	=	0x0099
+                           00009A   285 _SBUF_1	=	0x009a
+                           00009B   286 _EIE	=	0x009b
+                           00009C   287 _EIE1	=	0x009c
+                           00009F   288 _CHPCON	=	0x009f
+                           0000A0   289 _P2	=	0x00a0
+                           0000A2   290 _AUXR1	=	0x00a2
+                           0000A3   291 _BODCON0	=	0x00a3
+                           0000A4   292 _IAPTRG	=	0x00a4
+                           0000A5   293 _IAPUEN	=	0x00a5
+                           0000A6   294 _IAPAL	=	0x00a6
+                           0000A7   295 _IAPAH	=	0x00a7
+                           0000A8   296 _IE	=	0x00a8
+                           0000A9   297 _SADDR	=	0x00a9
+                           0000AA   298 _WDCON	=	0x00aa
+                           0000AB   299 _BODCON1	=	0x00ab
+                           0000AC   300 _P3M1	=	0x00ac
+                           0000AC   301 _P3S	=	0x00ac
+                           0000AD   302 _P3M2	=	0x00ad
+                           0000AD   303 _P3SR	=	0x00ad
+                           0000AE   304 _IAPFD	=	0x00ae
+                           0000AF   305 _IAPCN	=	0x00af
+                           0000B0   306 _P3	=	0x00b0
+                           0000B1   307 _P0M1	=	0x00b1
+                           0000B1   308 _P0S	=	0x00b1
+                           0000B2   309 _P0M2	=	0x00b2
+                           0000B2   310 _P0SR	=	0x00b2
+                           0000B3   311 _P1M1	=	0x00b3
+                           0000B3   312 _P1S	=	0x00b3
+                           0000B4   313 _P1M2	=	0x00b4
+                           0000B4   314 _P1SR	=	0x00b4
+                           0000B5   315 _P2S	=	0x00b5
+                           0000B7   316 _IPH	=	0x00b7
+                           0000B7   317 _PWMINTC	=	0x00b7
+                           0000B8   318 _IP	=	0x00b8
+                           0000B9   319 _SADEN	=	0x00b9
+                           0000BA   320 _SADEN_1	=	0x00ba
+                           0000BB   321 _SADDR_1	=	0x00bb
+                           0000BC   322 _I2DAT	=	0x00bc
+                           0000BD   323 _I2STAT	=	0x00bd
+                           0000BE   324 _I2CLK	=	0x00be
+                           0000BF   325 _I2TOC	=	0x00bf
+                           0000C0   326 _I2CON	=	0x00c0
+                           0000C1   327 _I2ADDR	=	0x00c1
+                           0000C2   328 _ADCRL	=	0x00c2
+                           0000C3   329 _ADCRH	=	0x00c3
+                           0000C4   330 _T3CON	=	0x00c4
+                           0000C4   331 _PWM4H	=	0x00c4
+                           0000C5   332 _RL3	=	0x00c5
+                           0000C5   333 _PWM5H	=	0x00c5
+                           0000C6   334 _RH3	=	0x00c6
+                           0000C6   335 _PIOCON1	=	0x00c6
+                           0000C7   336 _TA	=	0x00c7
+                           0000C8   337 _T2CON	=	0x00c8
+                           0000C9   338 _T2MOD	=	0x00c9
+                           0000CA   339 _RCMP2L	=	0x00ca
+                           0000CB   340 _RCMP2H	=	0x00cb
+                           0000CC   341 _TL2	=	0x00cc
+                           0000CC   342 _PWM4L	=	0x00cc
+                           0000CD   343 _TH2	=	0x00cd
+                           0000CD   344 _PWM5L	=	0x00cd
+                           0000CE   345 _ADCMPL	=	0x00ce
+                           0000CF   346 _ADCMPH	=	0x00cf
+                           0000D0   347 _PSW	=	0x00d0
+                           0000D1   348 _PWMPH	=	0x00d1
+                           0000D2   349 _PWM0H	=	0x00d2
+                           0000D3   350 _PWM1H	=	0x00d3
+                           0000D4   351 _PWM2H	=	0x00d4
+                           0000D5   352 _PWM3H	=	0x00d5
+                           0000D6   353 _PNP	=	0x00d6
+                           0000D7   354 _FBD	=	0x00d7
+                           0000D8   355 _PWMCON0	=	0x00d8
+                           0000D9   356 _PWMPL	=	0x00d9
+                           0000DA   357 _PWM0L	=	0x00da
+                           0000DB   358 _PWM1L	=	0x00db
+                           0000DC   359 _PWM2L	=	0x00dc
+                           0000DD   360 _PWM3L	=	0x00dd
+                           0000DE   361 _PIOCON0	=	0x00de
+                           0000DF   362 _PWMCON1	=	0x00df
+                           0000E0   363 _ACC	=	0x00e0
+                           0000E1   364 _ADCCON1	=	0x00e1
+                           0000E2   365 _ADCCON2	=	0x00e2
+                           0000E3   366 _ADCDLY	=	0x00e3
+                           0000E4   367 _C0L	=	0x00e4
+                           0000E5   368 _C0H	=	0x00e5
+                           0000E6   369 _C1L	=	0x00e6
+                           0000E7   370 _C1H	=	0x00e7
+                           0000E8   371 _ADCCON0	=	0x00e8
+                           0000E9   372 _PICON	=	0x00e9
+                           0000EA   373 _PINEN	=	0x00ea
+                           0000EB   374 _PIPEN	=	0x00eb
+                           0000EC   375 _PIF	=	0x00ec
+                           0000ED   376 _C2L	=	0x00ed
+                           0000EE   377 _C2H	=	0x00ee
+                           0000EF   378 _EIP	=	0x00ef
+                           0000F0   379 _B	=	0x00f0
+                           0000F1   380 _CAPCON3	=	0x00f1
+                           0000F2   381 _CAPCON4	=	0x00f2
+                           0000F3   382 _SPCR	=	0x00f3
+                           0000F3   383 _SPCR2	=	0x00f3
+                           0000F4   384 _SPSR	=	0x00f4
+                           0000F5   385 _SPDR	=	0x00f5
+                           0000F6   386 _AINDIDS	=	0x00f6
+                           0000F7   387 _EIPH	=	0x00f7
+                           0000F8   388 _SCON_1	=	0x00f8
+                           0000F9   389 _PDTEN	=	0x00f9
+                           0000FA   390 _PDTCNT	=	0x00fa
+                           0000FB   391 _PMEN	=	0x00fb
+                           0000FC   392 _PMD	=	0x00fc
+                           0000FE   393 _EIP1	=	0x00fe
+                           0000FF   394 _EIPH1	=	0x00ff
+                                    395 ;--------------------------------------------------------
+                                    396 ; special function bits
+                                    397 ;--------------------------------------------------------
+                                    398 	.area RSEG    (ABS,DATA)
+      000000                        399 	.org 0x0000
+                           0000FF   400 _SM0_1	=	0x00ff
+                           0000FF   401 _FE_1	=	0x00ff
+                           0000FE   402 _SM1_1	=	0x00fe
+                           0000FD   403 _SM2_1	=	0x00fd
+                           0000FC   404 _REN_1	=	0x00fc
+                           0000FB   405 _TB8_1	=	0x00fb
+                           0000FA   406 _RB8_1	=	0x00fa
+                           0000F9   407 _TI_1	=	0x00f9
+                           0000F8   408 _RI_1	=	0x00f8
+                           0000EF   409 _ADCF	=	0x00ef
+                           0000EE   410 _ADCS	=	0x00ee
+                           0000ED   411 _ETGSEL1	=	0x00ed
+                           0000EC   412 _ETGSEL0	=	0x00ec
+                           0000EB   413 _ADCHS3	=	0x00eb
+                           0000EA   414 _ADCHS2	=	0x00ea
+                           0000E9   415 _ADCHS1	=	0x00e9
+                           0000E8   416 _ADCHS0	=	0x00e8
+                           0000DF   417 _PWMRUN	=	0x00df
+                           0000DE   418 _LOAD	=	0x00de
+                           0000DD   419 _PWMF	=	0x00dd
+                           0000DC   420 _CLRPWM	=	0x00dc
+                           0000D7   421 _CY	=	0x00d7
+                           0000D6   422 _AC	=	0x00d6
+                           0000D5   423 _F0	=	0x00d5
+                           0000D4   424 _RS1	=	0x00d4
+                           0000D3   425 _RS0	=	0x00d3
+                           0000D2   426 _OV	=	0x00d2
+                           0000D0   427 _P	=	0x00d0
+                           0000CF   428 _TF2	=	0x00cf
+                           0000CA   429 _TR2	=	0x00ca
+                           0000C8   430 _CM_RL2	=	0x00c8
+                           0000C6   431 _I2CEN	=	0x00c6
+                           0000C5   432 _STA	=	0x00c5
+                           0000C4   433 _STO	=	0x00c4
+                           0000C3   434 _SI	=	0x00c3
+                           0000C2   435 _AA	=	0x00c2
+                           0000C0   436 _I2CPX	=	0x00c0
+                           0000BE   437 _PADC	=	0x00be
+                           0000BD   438 _PBOD	=	0x00bd
+                           0000BC   439 _PS	=	0x00bc
+                           0000BB   440 _PT1	=	0x00bb
+                           0000BA   441 _PX1	=	0x00ba
+                           0000B9   442 _PT0	=	0x00b9
+                           0000B8   443 _PX0	=	0x00b8
+                           0000B0   444 _P30	=	0x00b0
+                           0000AF   445 _EA	=	0x00af
+                           0000AE   446 _EADC	=	0x00ae
+                           0000AD   447 _EBOD	=	0x00ad
+                           0000AC   448 _ES	=	0x00ac
+                           0000AB   449 _ET1	=	0x00ab
+                           0000AA   450 _EX1	=	0x00aa
+                           0000A9   451 _ET0	=	0x00a9
+                           0000A8   452 _EX0	=	0x00a8
+                           0000A0   453 _P20	=	0x00a0
+                           00009F   454 _SM0	=	0x009f
+                           00009F   455 _FE	=	0x009f
+                           00009E   456 _SM1	=	0x009e
+                           00009D   457 _SM2	=	0x009d
+                           00009C   458 _REN	=	0x009c
+                           00009B   459 _TB8	=	0x009b
+                           00009A   460 _RB8	=	0x009a
+                           000099   461 _TI	=	0x0099
+                           000098   462 _RI	=	0x0098
+                           000097   463 _P17	=	0x0097
+                           000096   464 _P16	=	0x0096
+                           000096   465 _TXD_1	=	0x0096
+                           000095   466 _P15	=	0x0095
+                           000094   467 _P14	=	0x0094
+                           000094   468 _SDA	=	0x0094
+                           000093   469 _P13	=	0x0093
+                           000093   470 _SCL	=	0x0093
+                           000092   471 _P12	=	0x0092
+                           000091   472 _P11	=	0x0091
+                           000090   473 _P10	=	0x0090
+                           00008F   474 _TF1	=	0x008f
+                           00008E   475 _TR1	=	0x008e
+                           00008D   476 _TF0	=	0x008d
+                           00008C   477 _TR0	=	0x008c
+                           00008B   478 _IE1	=	0x008b
+                           00008A   479 _IT1	=	0x008a
+                           000089   480 _IE0	=	0x0089
+                           000088   481 _IT0	=	0x0088
+                           000087   482 _P07	=	0x0087
+                           000087   483 _RXD	=	0x0087
+                           000086   484 _P06	=	0x0086
+                           000086   485 _TXD	=	0x0086
+                           000085   486 _P05	=	0x0085
+                           000084   487 _P04	=	0x0084
+                           000084   488 _STADC	=	0x0084
+                           000083   489 _P03	=	0x0083
+                           000082   490 _P02	=	0x0082
+                           000082   491 _RXD_1	=	0x0082
+                           000081   492 _P01	=	0x0081
+                           000081   493 _MISO	=	0x0081
+                           000080   494 _P00	=	0x0080
+                           000080   495 _MOSI	=	0x0080
+                                    496 ;--------------------------------------------------------
+                                    497 ; overlayable register banks
+                                    498 ;--------------------------------------------------------
+                                    499 	.area REG_BANK_0	(REL,OVR,DATA)
+      000000                        500 	.ds 8
+                                    501 ;--------------------------------------------------------
+                                    502 ; internal ram data
+                                    503 ;--------------------------------------------------------
+                                    504 	.area DSEG    (DATA)
+      000000                        505 _pt6961_setNumber_PARM_2:
+      000000                        506 	.ds 1
+      000001                        507 _pt6961_setNumberFade_lastNumber_10000_208:
+      000001                        508 	.ds 2
+      000003                        509 _pt6961_setNumberFade_lastColon_10000_208:
+      000003                        510 	.ds 1
+      000004                        511 _pt6961_setNumberFade_PARM_2:
+      000004                        512 	.ds 1
+      000005                        513 _pt6961_setNumberFade_number_10000_207:
+      000005                        514 	.ds 2
+      000007                        515 _pt6961_setNumberFade_i_20000_209:
+      000007                        516 	.ds 1
+      000008                        517 _pt6961_setNumberFade_j_40000_211:
+      000008                        518 	.ds 1
+      000009                        519 _pt6961_setNumberFade_sloc0_1_0:
+      000009                        520 	.ds 2
+                                    521 ;--------------------------------------------------------
+                                    522 ; overlayable items in internal ram
+                                    523 ;--------------------------------------------------------
+                                    524 	.area	OSEG    (OVR,DATA)
+                                    525 	.area	OSEG    (OVR,DATA)
+                                    526 	.area	OSEG    (OVR,DATA)
+                                    527 ;--------------------------------------------------------
+                                    528 ; indirectly addressable internal ram data
+                                    529 ;--------------------------------------------------------
+                                    530 	.area ISEG    (DATA)
+                                    531 ;--------------------------------------------------------
+                                    532 ; absolute internal ram data
+                                    533 ;--------------------------------------------------------
+                                    534 	.area IABS    (ABS,DATA)
+                                    535 	.area IABS    (ABS,DATA)
+                                    536 ;--------------------------------------------------------
+                                    537 ; bit data
+                                    538 ;--------------------------------------------------------
+                                    539 	.area BSEG    (BIT)
+                                    540 ;--------------------------------------------------------
+                                    541 ; paged external ram data
+                                    542 ;--------------------------------------------------------
+                                    543 	.area PSEG    (PAG,XDATA)
+                                    544 ;--------------------------------------------------------
+                                    545 ; uninitialized external ram data
+                                    546 ;--------------------------------------------------------
+                                    547 	.area XSEG    (XDATA)
+                                    548 ;--------------------------------------------------------
+                                    549 ; absolute external ram data
+                                    550 ;--------------------------------------------------------
+                                    551 	.area XABS    (ABS,XDATA)
+                                    552 ;--------------------------------------------------------
+                                    553 ; initialized external ram data
+                                    554 ;--------------------------------------------------------
+                                    555 	.area XISEG   (XDATA)
+                                    556 	.area HOME    (CODE)
+                                    557 	.area GSINIT0 (CODE)
+                                    558 	.area GSINIT1 (CODE)
+                                    559 	.area GSINIT2 (CODE)
+                                    560 	.area GSINIT3 (CODE)
+                                    561 	.area GSINIT4 (CODE)
+                                    562 	.area GSINIT5 (CODE)
+                                    563 	.area GSINIT  (CODE)
+                                    564 	.area GSFINAL (CODE)
+                                    565 	.area CSEG    (CODE)
+                                    566 ;--------------------------------------------------------
+                                    567 ; global & static initialisations
+                                    568 ;--------------------------------------------------------
+                                    569 	.area HOME    (CODE)
+                                    570 	.area GSINIT  (CODE)
+                                    571 	.area GSFINAL (CODE)
+                                    572 	.area GSINIT  (CODE)
+                                    573 ;------------------------------------------------------------
+                                    574 ;Allocation info for local variables in function 'pt6961_setNumberFade'
+                                    575 ;------------------------------------------------------------
+                                    576 ;lastNumber                Allocated with name '_pt6961_setNumberFade_lastNumber_10000_208'
+                                    577 ;lastColon                 Allocated with name '_pt6961_setNumberFade_lastColon_10000_208'
+                                    578 ;u8colonOn                 Allocated with name '_pt6961_setNumberFade_PARM_2'
+                                    579 ;number                    Allocated with name '_pt6961_setNumberFade_number_10000_207'
+                                    580 ;i                         Allocated with name '_pt6961_setNumberFade_i_20000_209'
+                                    581 ;j                         Allocated with name '_pt6961_setNumberFade_j_40000_211'
+                                    582 ;__700000019               Allocated to registers 
+                                    583 ;u8data                    Allocated to registers 
+                                    584 ;__700000021               Allocated to registers 
+                                    585 ;u8data                    Allocated to registers 
+                                    586 ;__700000023               Allocated to registers 
+                                    587 ;u8data                    Allocated to registers 
+                                    588 ;__700000025               Allocated to registers 
+                                    589 ;u8data                    Allocated to registers 
+                                    590 ;__700000027               Allocated to registers 
+                                    591 ;u8data                    Allocated to registers 
+                                    592 ;__700000029               Allocated to registers 
+                                    593 ;u8data                    Allocated to registers 
+                                    594 ;__700000031               Allocated to registers 
+                                    595 ;u8data                    Allocated to registers 
+                                    596 ;__700000033               Allocated to registers 
+                                    597 ;u8data                    Allocated to registers 
+                                    598 ;sloc0                     Allocated with name '_pt6961_setNumberFade_sloc0_1_0'
+                                    599 ;------------------------------------------------------------
+                                    600 ;	/Users/oliver/code/c/Clock_n76e003/firmware/003Clock/PT6961.c:82: static int lastNumber = 0;
+      000000 E4               [12]  601 	clr	a
+      000001 F5*01            [12]  602 	mov	_pt6961_setNumberFade_lastNumber_10000_208,a
+      000003 F5*02            [12]  603 	mov	(_pt6961_setNumberFade_lastNumber_10000_208 + 1),a
+                                    604 ;	/Users/oliver/code/c/Clock_n76e003/firmware/003Clock/PT6961.c:83: static uint8_t lastColon = 0;
+      000005 F5*03            [12]  605 	mov	_pt6961_setNumberFade_lastColon_10000_208,a
+                                    606 ;--------------------------------------------------------
+                                    607 ; Home
+                                    608 ;--------------------------------------------------------
+                                    609 	.area HOME    (CODE)
+                                    610 	.area HOME    (CODE)
+                                    611 ;--------------------------------------------------------
+                                    612 ; code
+                                    613 ;--------------------------------------------------------
+                                    614 	.area CSEG    (CODE)
+                                    615 ;------------------------------------------------------------
+                                    616 ;Allocation info for local variables in function 'pt6961_writeBit'
+                                    617 ;------------------------------------------------------------
+                                    618 ;u8data                    Allocated to registers r7 
+                                    619 ;------------------------------------------------------------
+                                    620 ;	/Users/oliver/code/c/Clock_n76e003/firmware/003Clock/PT6961.c:8: inline void pt6961_writeBit(uint8_t u8data)
+                                    621 ;	-----------------------------------------
+                                    622 ;	 function pt6961_writeBit
+                                    623 ;	-----------------------------------------
+      000000                        624 _pt6961_writeBit:
+                           000007   625 	ar7 = 0x07
+                           000006   626 	ar6 = 0x06
+                           000005   627 	ar5 = 0x05
+                           000004   628 	ar4 = 0x04
+                           000003   629 	ar3 = 0x03
+                           000002   630 	ar2 = 0x02
+                           000001   631 	ar1 = 0x01
+                           000000   632 	ar0 = 0x00
+                                    633 ;	/Users/oliver/code/c/Clock_n76e003/firmware/003Clock/PT6961.c:10: PT6961_DIN = u8data & 0x01;
+      000000 E5 82            [12]  634 	mov	a,dpl
+      000002 54 01            [12]  635 	anl	a,#0x01
+                                    636 ;	assignBit
+      000004 24 FF            [12]  637 	add	a,#0xff
+      000006 92 80            [24]  638 	mov	_P00,c
+                                    639 ;	/Users/oliver/code/c/Clock_n76e003/firmware/003Clock/PT6961.c:11: PT6961_CLK = 0;
+                                    640 ;	assignBit
+      000008 C2 90            [12]  641 	clr	_P10
+                                    642 ;	/Users/oliver/code/c/Clock_n76e003/firmware/003Clock/PT6961.c:12: PT6961_CLK = 1;
+                                    643 ;	assignBit
+      00000A D2 90            [12]  644 	setb	_P10
+                                    645 ;	/Users/oliver/code/c/Clock_n76e003/firmware/003Clock/PT6961.c:13: }
+      00000C 22               [24]  646 	ret
+                                    647 ;------------------------------------------------------------
+                                    648 ;Allocation info for local variables in function 'pt6961_writeByte'
+                                    649 ;------------------------------------------------------------
+                                    650 ;u8data                    Allocated to registers 
+                                    651 ;------------------------------------------------------------
+                                    652 ;	/Users/oliver/code/c/Clock_n76e003/firmware/003Clock/PT6961.c:15: inline void pt6961_writeByte(uint8_t u8data)
+                                    653 ;	-----------------------------------------
+                                    654 ;	 function pt6961_writeByte
+                                    655 ;	-----------------------------------------
+      00000D                        656 _pt6961_writeByte:
+      00000D 85 82 F5         [24]  657 	mov	_SPDR,dpl
+                                    658 ;	/Users/oliver/code/c/Clock_n76e003/firmware/003Clock/PT6961.c:19: while (!(SPSR & 0x80)); // Wait until transfer is complete
+      000010                        659 00101$:
+      000010 E5 F4            [12]  660 	mov	a,_SPSR
+      000012 30 E7 FB         [24]  661 	jnb	acc.7,00101$
+                                    662 ;	/Users/oliver/code/c/Clock_n76e003/firmware/003Clock/PT6961.c:20: SPSR &= 0x7F; // Clear SPIF
+      000015 53 F4 7F         [24]  663 	anl	_SPSR,#0x7f
+                                    664 ;	/Users/oliver/code/c/Clock_n76e003/firmware/003Clock/PT6961.c:25: }
+      000018 22               [24]  665 	ret
+                                    666 ;------------------------------------------------------------
+                                    667 ;Allocation info for local variables in function 'pt6961_writeCommand'
+                                    668 ;------------------------------------------------------------
+                                    669 ;u8cmd                     Allocated to registers r7 
+                                    670 ;__200000001               Allocated to registers 
+                                    671 ;u8data                    Allocated to registers 
+                                    672 ;------------------------------------------------------------
+                                    673 ;	/Users/oliver/code/c/Clock_n76e003/firmware/003Clock/PT6961.c:27: void pt6961_writeCommand(uint8_t u8cmd)
+                                    674 ;	-----------------------------------------
+                                    675 ;	 function pt6961_writeCommand
+                                    676 ;	-----------------------------------------
+      000019                        677 _pt6961_writeCommand:
+      000019 AF 82            [24]  678 	mov	r7, dpl
+                                    679 ;	/Users/oliver/code/c/Clock_n76e003/firmware/003Clock/PT6961.c:29: PT6961_STB = 1; // Initialize serial communication
+                                    680 ;	assignBit
+      00001B D2 91            [12]  681 	setb	_P11
+                                    682 ;	/Users/oliver/code/c/Clock_n76e003/firmware/003Clock/PT6961.c:30: PT6961_STB = 0;
+                                    683 ;	assignBit
+      00001D C2 91            [12]  684 	clr	_P11
+                                    685 ;	/Users/oliver/code/c/Clock_n76e003/firmware/003Clock/PT6961.c:18: SPDR = u8data;
+      00001F 8F F5            [24]  686 	mov	_SPDR,r7
+                                    687 ;	/Users/oliver/code/c/Clock_n76e003/firmware/003Clock/PT6961.c:19: while (!(SPSR & 0x80)); // Wait until transfer is complete
+      000021                        688 00101$:
+      000021 E5 F4            [12]  689 	mov	a,_SPSR
+      000023 30 E7 FB         [24]  690 	jnb	acc.7,00101$
+                                    691 ;	/Users/oliver/code/c/Clock_n76e003/firmware/003Clock/PT6961.c:20: SPSR &= 0x7F; // Clear SPIF
+      000026 53 F4 7F         [24]  692 	anl	_SPSR,#0x7f
+                                    693 ;	/Users/oliver/code/c/Clock_n76e003/firmware/003Clock/PT6961.c:31: pt6961_writeByte(u8cmd);
+                                    694 ;	/Users/oliver/code/c/Clock_n76e003/firmware/003Clock/PT6961.c:32: }
+      000029 22               [24]  695 	ret
+                                    696 ;------------------------------------------------------------
+                                    697 ;Allocation info for local variables in function 'pt6961_clear'
+                                    698 ;------------------------------------------------------------
+                                    699 ;__200000003               Allocated to registers 
+                                    700 ;u8data                    Allocated to registers 
+                                    701 ;__200000005               Allocated to registers 
+                                    702 ;u8data                    Allocated to registers 
+                                    703 ;__200000007               Allocated to registers 
+                                    704 ;u8data                    Allocated to registers 
+                                    705 ;__200000009               Allocated to registers 
+                                    706 ;u8data                    Allocated to registers 
+                                    707 ;------------------------------------------------------------
+                                    708 ;	/Users/oliver/code/c/Clock_n76e003/firmware/003Clock/PT6961.c:34: void pt6961_clear(void)
+                                    709 ;	-----------------------------------------
+                                    710 ;	 function pt6961_clear
+                                    711 ;	-----------------------------------------
+      00002A                        712 _pt6961_clear:
+                                    713 ;	/Users/oliver/code/c/Clock_n76e003/firmware/003Clock/PT6961.c:36: pt6961_writeCommand(0xC0);
+      00002A 75 82 C0         [24]  714 	mov	dpl, #0xc0
+      00002D 12r00r19         [24]  715 	lcall	_pt6961_writeCommand
+                                    716 ;	/Users/oliver/code/c/Clock_n76e003/firmware/003Clock/PT6961.c:18: SPDR = u8data;
+      000030 75 F5 00         [24]  717 	mov	_SPDR,#0x00
+                                    718 ;	/Users/oliver/code/c/Clock_n76e003/firmware/003Clock/PT6961.c:19: while (!(SPSR & 0x80)); // Wait until transfer is complete
+      000033                        719 00101$:
+      000033 E5 F4            [12]  720 	mov	a,_SPSR
+      000035 30 E7 FB         [24]  721 	jnb	acc.7,00101$
+                                    722 ;	/Users/oliver/code/c/Clock_n76e003/firmware/003Clock/PT6961.c:20: SPSR &= 0x7F; // Clear SPIF
+      000038 53 F4 7F         [24]  723 	anl	_SPSR,#0x7f
+                                    724 ;	/Users/oliver/code/c/Clock_n76e003/firmware/003Clock/PT6961.c:38: pt6961_writeCommand(0xC2);
+      00003B 75 82 C2         [24]  725 	mov	dpl, #0xc2
+      00003E 12r00r19         [24]  726 	lcall	_pt6961_writeCommand
+                                    727 ;	/Users/oliver/code/c/Clock_n76e003/firmware/003Clock/PT6961.c:18: SPDR = u8data;
+      000041 75 F5 00         [24]  728 	mov	_SPDR,#0x00
+                                    729 ;	/Users/oliver/code/c/Clock_n76e003/firmware/003Clock/PT6961.c:19: while (!(SPSR & 0x80)); // Wait until transfer is complete
+      000044                        730 00105$:
+      000044 E5 F4            [12]  731 	mov	a,_SPSR
+      000046 30 E7 FB         [24]  732 	jnb	acc.7,00105$
+                                    733 ;	/Users/oliver/code/c/Clock_n76e003/firmware/003Clock/PT6961.c:20: SPSR &= 0x7F; // Clear SPIF
+      000049 53 F4 7F         [24]  734 	anl	_SPSR,#0x7f
+                                    735 ;	/Users/oliver/code/c/Clock_n76e003/firmware/003Clock/PT6961.c:40: pt6961_writeCommand(0xC4);
+      00004C 75 82 C4         [24]  736 	mov	dpl, #0xc4
+      00004F 12r00r19         [24]  737 	lcall	_pt6961_writeCommand
+                                    738 ;	/Users/oliver/code/c/Clock_n76e003/firmware/003Clock/PT6961.c:18: SPDR = u8data;
+      000052 75 F5 00         [24]  739 	mov	_SPDR,#0x00
+                                    740 ;	/Users/oliver/code/c/Clock_n76e003/firmware/003Clock/PT6961.c:19: while (!(SPSR & 0x80)); // Wait until transfer is complete
+      000055                        741 00109$:
+      000055 E5 F4            [12]  742 	mov	a,_SPSR
+      000057 30 E7 FB         [24]  743 	jnb	acc.7,00109$
+                                    744 ;	/Users/oliver/code/c/Clock_n76e003/firmware/003Clock/PT6961.c:20: SPSR &= 0x7F; // Clear SPIF
+      00005A 53 F4 7F         [24]  745 	anl	_SPSR,#0x7f
+                                    746 ;	/Users/oliver/code/c/Clock_n76e003/firmware/003Clock/PT6961.c:42: pt6961_writeCommand(0xC6);
+      00005D 75 82 C6         [24]  747 	mov	dpl, #0xc6
+      000060 12r00r19         [24]  748 	lcall	_pt6961_writeCommand
+                                    749 ;	/Users/oliver/code/c/Clock_n76e003/firmware/003Clock/PT6961.c:18: SPDR = u8data;
+      000063 75 F5 00         [24]  750 	mov	_SPDR,#0x00
+                                    751 ;	/Users/oliver/code/c/Clock_n76e003/firmware/003Clock/PT6961.c:19: while (!(SPSR & 0x80)); // Wait until transfer is complete
+      000066                        752 00113$:
+      000066 E5 F4            [12]  753 	mov	a,_SPSR
+      000068 30 E7 FB         [24]  754 	jnb	acc.7,00113$
+                                    755 ;	/Users/oliver/code/c/Clock_n76e003/firmware/003Clock/PT6961.c:20: SPSR &= 0x7F; // Clear SPIF
+      00006B 53 F4 7F         [24]  756 	anl	_SPSR,#0x7f
+                                    757 ;	/Users/oliver/code/c/Clock_n76e003/firmware/003Clock/PT6961.c:43: pt6961_writeByte(0);
+                                    758 ;	/Users/oliver/code/c/Clock_n76e003/firmware/003Clock/PT6961.c:44: }
+      00006E 22               [24]  759 	ret
+                                    760 ;------------------------------------------------------------
+                                    761 ;Allocation info for local variables in function 'pt6961_setBrightness'
+                                    762 ;------------------------------------------------------------
+                                    763 ;u8brightness              Allocated to registers r7 
+                                    764 ;------------------------------------------------------------
+                                    765 ;	/Users/oliver/code/c/Clock_n76e003/firmware/003Clock/PT6961.c:46: void pt6961_setBrightness(uint8_t u8brightness)
+                                    766 ;	-----------------------------------------
+                                    767 ;	 function pt6961_setBrightness
+                                    768 ;	-----------------------------------------
+      00006F                        769 _pt6961_setBrightness:
+                                    770 ;	/Users/oliver/code/c/Clock_n76e003/firmware/003Clock/PT6961.c:48: if (u8brightness > 0)
+      00006F E5 82            [12]  771 	mov	a,dpl
+      000071 FF               [12]  772 	mov	r7,a
+      000072 60 0B            [24]  773 	jz	00102$
+                                    774 ;	/Users/oliver/code/c/Clock_n76e003/firmware/003Clock/PT6961.c:49: pt6961_writeCommand(0x88 | (u8brightness - 1 & 0x07));
+      000074 1F               [12]  775 	dec	r7
+      000075 74 07            [12]  776 	mov	a,#0x07
+      000077 5F               [12]  777 	anl	a,r7
+      000078 44 88            [12]  778 	orl	a,#0x88
+      00007A F5 82            [12]  779 	mov	dpl,a
+      00007C 02r00r19         [24]  780 	ljmp	_pt6961_writeCommand
+      00007F                        781 00102$:
+                                    782 ;	/Users/oliver/code/c/Clock_n76e003/firmware/003Clock/PT6961.c:51: pt6961_writeCommand(0x80);
+      00007F 75 82 80         [24]  783 	mov	dpl, #0x80
+                                    784 ;	/Users/oliver/code/c/Clock_n76e003/firmware/003Clock/PT6961.c:52: }
+      000082 02r00r19         [24]  785 	ljmp	_pt6961_writeCommand
+                                    786 ;------------------------------------------------------------
+                                    787 ;Allocation info for local variables in function 'pt6961_init'
+                                    788 ;------------------------------------------------------------
+                                    789 ;	/Users/oliver/code/c/Clock_n76e003/firmware/003Clock/PT6961.c:54: void pt6961_init(void)
+                                    790 ;	-----------------------------------------
+                                    791 ;	 function pt6961_init
+                                    792 ;	-----------------------------------------
+      000085                        793 _pt6961_init:
+                                    794 ;	/Users/oliver/code/c/Clock_n76e003/firmware/003Clock/PT6961.c:56: P00_PUSHPULL_MODE;
+      000085 53 B1 FE         [24]  795 	anl	_P0M1,#0xfe
+      000088 43 B2 01         [24]  796 	orl	_P0M2,#0x01
+                                    797 ;	/Users/oliver/code/c/Clock_n76e003/firmware/003Clock/PT6961.c:57: P10_PUSHPULL_MODE;
+      00008B 53 B3 FE         [24]  798 	anl	_P1M1,#0xfe
+      00008E 43 B4 01         [24]  799 	orl	_P1M2,#0x01
+                                    800 ;	/Users/oliver/code/c/Clock_n76e003/firmware/003Clock/PT6961.c:58: P11_PUSHPULL_MODE;
+      000091 53 B3 FD         [24]  801 	anl	_P1M1,#0xfd
+      000094 43 B4 02         [24]  802 	orl	_P1M2,#0x02
+                                    803 ;	/Users/oliver/code/c/Clock_n76e003/firmware/003Clock/PT6961.c:61: SPSR = 0x08; // DISMODF = 1
+      000097 75 F4 08         [24]  804 	mov	_SPSR,#0x08
+                                    805 ;	/Users/oliver/code/c/Clock_n76e003/firmware/003Clock/PT6961.c:62: SPCR = 0x7F; // SPIEN, LSBFE, MSTR, CPOL, CPHA = 1; SPI clock rate divide by 16
+      00009A 75 F3 7F         [24]  806 	mov	_SPCR,#0x7f
+                                    807 ;	/Users/oliver/code/c/Clock_n76e003/firmware/003Clock/PT6961.c:64: pt6961_clear();
+      00009D 12r00r2A         [24]  808 	lcall	_pt6961_clear
+                                    809 ;	/Users/oliver/code/c/Clock_n76e003/firmware/003Clock/PT6961.c:65: pt6961_setBrightness(4);
+      0000A0 75 82 04         [24]  810 	mov	dpl, #0x04
+                                    811 ;	/Users/oliver/code/c/Clock_n76e003/firmware/003Clock/PT6961.c:66: }
+      0000A3 02r00r6F         [24]  812 	ljmp	_pt6961_setBrightness
+                                    813 ;------------------------------------------------------------
+                                    814 ;Allocation info for local variables in function 'pt6961_setNumber'
+                                    815 ;------------------------------------------------------------
+                                    816 ;u8colonOn                 Allocated with name '_pt6961_setNumber_PARM_2'
+                                    817 ;number                    Allocated to registers r6 r7 
+                                    818 ;__200000011               Allocated to registers 
+                                    819 ;u8data                    Allocated to registers 
+                                    820 ;__200000013               Allocated to registers 
+                                    821 ;u8data                    Allocated to registers 
+                                    822 ;__200000015               Allocated to registers 
+                                    823 ;u8data                    Allocated to registers 
+                                    824 ;__200000017               Allocated to registers 
+                                    825 ;u8data                    Allocated to registers 
+                                    826 ;------------------------------------------------------------
+                                    827 ;	/Users/oliver/code/c/Clock_n76e003/firmware/003Clock/PT6961.c:68: void pt6961_setNumber(int number, uint8_t u8colonOn)
+                                    828 ;	-----------------------------------------
+                                    829 ;	 function pt6961_setNumber
+                                    830 ;	-----------------------------------------
+      0000A6                        831 _pt6961_setNumber:
+      0000A6 AE 82            [24]  832 	mov	r6, dpl
+      0000A8 AF 83            [24]  833 	mov	r7, dph
+                                    834 ;	/Users/oliver/code/c/Clock_n76e003/firmware/003Clock/PT6961.c:70: pt6961_writeCommand(0xC0);
+      0000AA 75 82 C0         [24]  835 	mov	dpl, #0xc0
+      0000AD C0 07            [24]  836 	push	ar7
+      0000AF C0 06            [24]  837 	push	ar6
+      0000B1 12r00r19         [24]  838 	lcall	_pt6961_writeCommand
+      0000B4 D0 06            [24]  839 	pop	ar6
+      0000B6 D0 07            [24]  840 	pop	ar7
+                                    841 ;	/Users/oliver/code/c/Clock_n76e003/firmware/003Clock/PT6961.c:71: pt6961_writeByte(u8segments[number / 1000] | (u8colonOn << 7));
+      0000B8 75*00 E8         [24]  842 	mov	__divsint_PARM_2,#0xe8
+      0000BB 75*01 03         [24]  843 	mov	(__divsint_PARM_2 + 1),#0x03
+      0000BE 8E 82            [24]  844 	mov	dpl, r6
+      0000C0 8F 83            [24]  845 	mov	dph, r7
+      0000C2 C0 07            [24]  846 	push	ar7
+      0000C4 C0 06            [24]  847 	push	ar6
+      0000C6 12r00r00         [24]  848 	lcall	__divsint
+      0000C9 AC 82            [24]  849 	mov	r4, dpl
+      0000CB AD 83            [24]  850 	mov	r5, dph
+      0000CD D0 06            [24]  851 	pop	ar6
+      0000CF D0 07            [24]  852 	pop	ar7
+      0000D1 EC               [12]  853 	mov	a,r4
+      0000D2 24r00            [12]  854 	add	a, #_u8segments
+      0000D4 F5 82            [12]  855 	mov	dpl,a
+      0000D6 ED               [12]  856 	mov	a,r5
+      0000D7 34s00            [12]  857 	addc	a, #(_u8segments >> 8)
+      0000D9 F5 83            [12]  858 	mov	dph,a
+      0000DB E4               [12]  859 	clr	a
+      0000DC 93               [24]  860 	movc	a,@a+dptr
+      0000DD FD               [12]  861 	mov	r5,a
+      0000DE E5*00            [12]  862 	mov	a,_pt6961_setNumber_PARM_2
+      0000E0 03               [12]  863 	rr	a
+      0000E1 54 80            [12]  864 	anl	a,#0x80
+      0000E3 FC               [12]  865 	mov	r4,a
+      0000E4 4D               [12]  866 	orl	a,r5
+      0000E5 F5 F5            [12]  867 	mov	_SPDR,a
+                                    868 ;	/Users/oliver/code/c/Clock_n76e003/firmware/003Clock/PT6961.c:19: while (!(SPSR & 0x80)); // Wait until transfer is complete
+      0000E7                        869 00101$:
+      0000E7 E5 F4            [12]  870 	mov	a,_SPSR
+      0000E9 30 E7 FB         [24]  871 	jnb	acc.7,00101$
+                                    872 ;	/Users/oliver/code/c/Clock_n76e003/firmware/003Clock/PT6961.c:20: SPSR &= 0x7F; // Clear SPIF
+      0000EC 53 F4 7F         [24]  873 	anl	_SPSR,#0x7f
+                                    874 ;	/Users/oliver/code/c/Clock_n76e003/firmware/003Clock/PT6961.c:72: pt6961_writeCommand(0xC2);
+      0000EF 75 82 C2         [24]  875 	mov	dpl, #0xc2
+      0000F2 C0 07            [24]  876 	push	ar7
+      0000F4 C0 06            [24]  877 	push	ar6
+      0000F6 C0 04            [24]  878 	push	ar4
+      0000F8 12r00r19         [24]  879 	lcall	_pt6961_writeCommand
+      0000FB D0 04            [24]  880 	pop	ar4
+      0000FD D0 06            [24]  881 	pop	ar6
+      0000FF D0 07            [24]  882 	pop	ar7
+                                    883 ;	/Users/oliver/code/c/Clock_n76e003/firmware/003Clock/PT6961.c:73: pt6961_writeByte(u8segments[number / 100 % 10] | (u8colonOn << 7));
+      000101 75*00 64         [24]  884 	mov	__divsint_PARM_2,#0x64
+      000104 75*01 00         [24]  885 	mov	(__divsint_PARM_2 + 1),#0x00
+      000107 8E 82            [24]  886 	mov	dpl, r6
+      000109 8F 83            [24]  887 	mov	dph, r7
+      00010B C0 07            [24]  888 	push	ar7
+      00010D C0 06            [24]  889 	push	ar6
+      00010F C0 04            [24]  890 	push	ar4
+      000111 12r00r00         [24]  891 	lcall	__divsint
+      000114 75*00 0A         [24]  892 	mov	__modsint_PARM_2,#0x0a
+      000117 75*01 00         [24]  893 	mov	(__modsint_PARM_2 + 1),#0x00
+      00011A 12r00r00         [24]  894 	lcall	__modsint
+      00011D AB 82            [24]  895 	mov	r3, dpl
+      00011F AD 83            [24]  896 	mov	r5, dph
+      000121 D0 04            [24]  897 	pop	ar4
+      000123 D0 06            [24]  898 	pop	ar6
+      000125 D0 07            [24]  899 	pop	ar7
+      000127 EB               [12]  900 	mov	a,r3
+      000128 24r00            [12]  901 	add	a, #_u8segments
+      00012A F5 82            [12]  902 	mov	dpl,a
+      00012C ED               [12]  903 	mov	a,r5
+      00012D 34s00            [12]  904 	addc	a, #(_u8segments >> 8)
+      00012F F5 83            [12]  905 	mov	dph,a
+      000131 E4               [12]  906 	clr	a
+      000132 93               [24]  907 	movc	a,@a+dptr
+      000133 4C               [12]  908 	orl	a,r4
+      000134 F5 F5            [12]  909 	mov	_SPDR,a
+                                    910 ;	/Users/oliver/code/c/Clock_n76e003/firmware/003Clock/PT6961.c:19: while (!(SPSR & 0x80)); // Wait until transfer is complete
+      000136                        911 00105$:
+      000136 E5 F4            [12]  912 	mov	a,_SPSR
+      000138 30 E7 FB         [24]  913 	jnb	acc.7,00105$
+                                    914 ;	/Users/oliver/code/c/Clock_n76e003/firmware/003Clock/PT6961.c:20: SPSR &= 0x7F; // Clear SPIF
+      00013B 53 F4 7F         [24]  915 	anl	_SPSR,#0x7f
+                                    916 ;	/Users/oliver/code/c/Clock_n76e003/firmware/003Clock/PT6961.c:74: pt6961_writeCommand(0xC4);
+      00013E 75 82 C4         [24]  917 	mov	dpl, #0xc4
+      000141 C0 07            [24]  918 	push	ar7
+      000143 C0 06            [24]  919 	push	ar6
+      000145 12r00r19         [24]  920 	lcall	_pt6961_writeCommand
+      000148 D0 06            [24]  921 	pop	ar6
+      00014A D0 07            [24]  922 	pop	ar7
+                                    923 ;	/Users/oliver/code/c/Clock_n76e003/firmware/003Clock/PT6961.c:75: pt6961_writeByte(u8segments[number / 10 % 10]);
+      00014C 75*00 0A         [24]  924 	mov	__divsint_PARM_2,#0x0a
+      00014F 75*01 00         [24]  925 	mov	(__divsint_PARM_2 + 1),#0x00
+      000152 8E 82            [24]  926 	mov	dpl, r6
+      000154 8F 83            [24]  927 	mov	dph, r7
+      000156 C0 07            [24]  928 	push	ar7
+      000158 C0 06            [24]  929 	push	ar6
+      00015A 12r00r00         [24]  930 	lcall	__divsint
+      00015D 75*00 0A         [24]  931 	mov	__modsint_PARM_2,#0x0a
+      000160 75*01 00         [24]  932 	mov	(__modsint_PARM_2 + 1),#0x00
+      000163 12r00r00         [24]  933 	lcall	__modsint
+      000166 AC 82            [24]  934 	mov	r4, dpl
+      000168 AD 83            [24]  935 	mov	r5, dph
+      00016A D0 06            [24]  936 	pop	ar6
+      00016C D0 07            [24]  937 	pop	ar7
+      00016E EC               [12]  938 	mov	a,r4
+      00016F 24r00            [12]  939 	add	a, #_u8segments
+      000171 F5 82            [12]  940 	mov	dpl,a
+      000173 ED               [12]  941 	mov	a,r5
+      000174 34s00            [12]  942 	addc	a, #(_u8segments >> 8)
+      000176 F5 83            [12]  943 	mov	dph,a
+      000178 E4               [12]  944 	clr	a
+      000179 93               [24]  945 	movc	a,@a+dptr
+      00017A F5 F5            [12]  946 	mov	_SPDR,a
+                                    947 ;	/Users/oliver/code/c/Clock_n76e003/firmware/003Clock/PT6961.c:19: while (!(SPSR & 0x80)); // Wait until transfer is complete
+      00017C                        948 00109$:
+      00017C E5 F4            [12]  949 	mov	a,_SPSR
+      00017E 30 E7 FB         [24]  950 	jnb	acc.7,00109$
+                                    951 ;	/Users/oliver/code/c/Clock_n76e003/firmware/003Clock/PT6961.c:20: SPSR &= 0x7F; // Clear SPIF
+      000181 53 F4 7F         [24]  952 	anl	_SPSR,#0x7f
+                                    953 ;	/Users/oliver/code/c/Clock_n76e003/firmware/003Clock/PT6961.c:76: pt6961_writeCommand(0xC6);
+      000184 75 82 C6         [24]  954 	mov	dpl, #0xc6
+      000187 C0 07            [24]  955 	push	ar7
+      000189 C0 06            [24]  956 	push	ar6
+      00018B 12r00r19         [24]  957 	lcall	_pt6961_writeCommand
+      00018E D0 06            [24]  958 	pop	ar6
+      000190 D0 07            [24]  959 	pop	ar7
+                                    960 ;	/Users/oliver/code/c/Clock_n76e003/firmware/003Clock/PT6961.c:77: pt6961_writeByte(u8segments[number % 10]);
+      000192 75*00 0A         [24]  961 	mov	__modsint_PARM_2,#0x0a
+      000195 75*01 00         [24]  962 	mov	(__modsint_PARM_2 + 1),#0x00
+      000198 8E 82            [24]  963 	mov	dpl, r6
+      00019A 8F 83            [24]  964 	mov	dph, r7
+      00019C 12r00r00         [24]  965 	lcall	__modsint
+      00019F AE 82            [24]  966 	mov	r6, dpl
+      0001A1 AF 83            [24]  967 	mov	r7, dph
+      0001A3 EE               [12]  968 	mov	a,r6
+      0001A4 24r00            [12]  969 	add	a, #_u8segments
+      0001A6 F5 82            [12]  970 	mov	dpl,a
+      0001A8 EF               [12]  971 	mov	a,r7
+      0001A9 34s00            [12]  972 	addc	a, #(_u8segments >> 8)
+      0001AB F5 83            [12]  973 	mov	dph,a
+      0001AD E4               [12]  974 	clr	a
+      0001AE 93               [24]  975 	movc	a,@a+dptr
+      0001AF F5 F5            [12]  976 	mov	_SPDR,a
+                                    977 ;	/Users/oliver/code/c/Clock_n76e003/firmware/003Clock/PT6961.c:19: while (!(SPSR & 0x80)); // Wait until transfer is complete
+      0001B1                        978 00113$:
+      0001B1 E5 F4            [12]  979 	mov	a,_SPSR
+      0001B3 30 E7 FB         [24]  980 	jnb	acc.7,00113$
+                                    981 ;	/Users/oliver/code/c/Clock_n76e003/firmware/003Clock/PT6961.c:20: SPSR &= 0x7F; // Clear SPIF
+      0001B6 53 F4 7F         [24]  982 	anl	_SPSR,#0x7f
+                                    983 ;	/Users/oliver/code/c/Clock_n76e003/firmware/003Clock/PT6961.c:77: pt6961_writeByte(u8segments[number % 10]);
+                                    984 ;	/Users/oliver/code/c/Clock_n76e003/firmware/003Clock/PT6961.c:78: }
+      0001B9 22               [24]  985 	ret
+                                    986 ;------------------------------------------------------------
+                                    987 ;Allocation info for local variables in function 'pt6961_setNumberFade'
+                                    988 ;------------------------------------------------------------
+                                    989 ;lastNumber                Allocated with name '_pt6961_setNumberFade_lastNumber_10000_208'
+                                    990 ;lastColon                 Allocated with name '_pt6961_setNumberFade_lastColon_10000_208'
+                                    991 ;u8colonOn                 Allocated with name '_pt6961_setNumberFade_PARM_2'
+                                    992 ;number                    Allocated with name '_pt6961_setNumberFade_number_10000_207'
+                                    993 ;i                         Allocated with name '_pt6961_setNumberFade_i_20000_209'
+                                    994 ;j                         Allocated with name '_pt6961_setNumberFade_j_40000_211'
+                                    995 ;__700000019               Allocated to registers 
+                                    996 ;u8data                    Allocated to registers 
+                                    997 ;__700000021               Allocated to registers 
+                                    998 ;u8data                    Allocated to registers 
+                                    999 ;__700000023               Allocated to registers 
+                                   1000 ;u8data                    Allocated to registers 
+                                   1001 ;__700000025               Allocated to registers 
+                                   1002 ;u8data                    Allocated to registers 
+                                   1003 ;__700000027               Allocated to registers 
+                                   1004 ;u8data                    Allocated to registers 
+                                   1005 ;__700000029               Allocated to registers 
+                                   1006 ;u8data                    Allocated to registers 
+                                   1007 ;__700000031               Allocated to registers 
+                                   1008 ;u8data                    Allocated to registers 
+                                   1009 ;__700000033               Allocated to registers 
+                                   1010 ;u8data                    Allocated to registers 
+                                   1011 ;sloc0                     Allocated with name '_pt6961_setNumberFade_sloc0_1_0'
+                                   1012 ;------------------------------------------------------------
+                                   1013 ;	/Users/oliver/code/c/Clock_n76e003/firmware/003Clock/PT6961.c:80: void pt6961_setNumberFade(int number, uint8_t u8colonOn)
+                                   1014 ;	-----------------------------------------
+                                   1015 ;	 function pt6961_setNumberFade
+                                   1016 ;	-----------------------------------------
+      0001BA                       1017 _pt6961_setNumberFade:
+                                   1018 ;	/Users/oliver/code/c/Clock_n76e003/firmware/003Clock/PT6961.c:85: for(uint8_t i=0; i<20; i++)
+      0001BA 85 82*05         [24] 1019 	mov	_pt6961_setNumberFade_number_10000_207,dpl
+      0001BD 85 83*06         [24] 1020 	mov	(_pt6961_setNumberFade_number_10000_207 + 1),dph
+      0001C0 75*00 E8         [24] 1021 	mov	__divsint_PARM_2,#0xe8
+      0001C3 75*01 03         [24] 1022 	mov	(__divsint_PARM_2 + 1),#0x03
+      0001C6 12r00r00         [24] 1023 	lcall	__divsint
+      0001C9 AC 82            [24] 1024 	mov	r4, dpl
+      0001CB AD 83            [24] 1025 	mov	r5, dph
+      0001CD EC               [12] 1026 	mov	a,r4
+      0001CE 24r00            [12] 1027 	add	a, #_u8segments
+      0001D0 FC               [12] 1028 	mov	r4,a
+      0001D1 ED               [12] 1029 	mov	a,r5
+      0001D2 34s00            [12] 1030 	addc	a, #(_u8segments >> 8)
+      0001D4 FD               [12] 1031 	mov	r5,a
+      0001D5 75*00 64         [24] 1032 	mov	__divsint_PARM_2,#0x64
+      0001D8 75*01 00         [24] 1033 	mov	(__divsint_PARM_2 + 1),#0x00
+      0001DB 85*05 82         [24] 1034 	mov	dpl, _pt6961_setNumberFade_number_10000_207
+      0001DE 85*06 83         [24] 1035 	mov	dph, (_pt6961_setNumberFade_number_10000_207 + 1)
+      0001E1 C0 05            [24] 1036 	push	ar5
+      0001E3 C0 04            [24] 1037 	push	ar4
+      0001E5 12r00r00         [24] 1038 	lcall	__divsint
+      0001E8 75*00 0A         [24] 1039 	mov	__modsint_PARM_2,#0x0a
+      0001EB 75*01 00         [24] 1040 	mov	(__modsint_PARM_2 + 1),#0x00
+      0001EE 12r00r00         [24] 1041 	lcall	__modsint
+      0001F1 AA 82            [24] 1042 	mov	r2, dpl
+      0001F3 AB 83            [24] 1043 	mov	r3, dph
+      0001F5 EA               [12] 1044 	mov	a,r2
+      0001F6 24r00            [12] 1045 	add	a, #_u8segments
+      0001F8 FA               [12] 1046 	mov	r2,a
+      0001F9 EB               [12] 1047 	mov	a,r3
+      0001FA 34s00            [12] 1048 	addc	a, #(_u8segments >> 8)
+      0001FC FB               [12] 1049 	mov	r3,a
+      0001FD 75*00 0A         [24] 1050 	mov	__divsint_PARM_2,#0x0a
+      000200 75*01 00         [24] 1051 	mov	(__divsint_PARM_2 + 1),#0x00
+      000203 85*05 82         [24] 1052 	mov	dpl, _pt6961_setNumberFade_number_10000_207
+      000206 85*06 83         [24] 1053 	mov	dph, (_pt6961_setNumberFade_number_10000_207 + 1)
+      000209 C0 03            [24] 1054 	push	ar3
+      00020B C0 02            [24] 1055 	push	ar2
+      00020D 12r00r00         [24] 1056 	lcall	__divsint
+      000210 75*00 0A         [24] 1057 	mov	__modsint_PARM_2,#0x0a
+      000213 75*01 00         [24] 1058 	mov	(__modsint_PARM_2 + 1),#0x00
+      000216 12r00r00         [24] 1059 	lcall	__modsint
+      000219 A8 82            [24] 1060 	mov	r0, dpl
+      00021B A9 83            [24] 1061 	mov	r1, dph
+      00021D E8               [12] 1062 	mov	a,r0
+      00021E 24r00            [12] 1063 	add	a, #_u8segments
+      000220 F8               [12] 1064 	mov	r0,a
+      000221 E9               [12] 1065 	mov	a,r1
+      000222 34s00            [12] 1066 	addc	a, #(_u8segments >> 8)
+      000224 F9               [12] 1067 	mov	r1,a
+      000225 75*00 0A         [24] 1068 	mov	__modsint_PARM_2,#0x0a
+      000228 75*01 00         [24] 1069 	mov	(__modsint_PARM_2 + 1),#0x00
+      00022B 85*05 82         [24] 1070 	mov	dpl, _pt6961_setNumberFade_number_10000_207
+      00022E 85*06 83         [24] 1071 	mov	dph, (_pt6961_setNumberFade_number_10000_207 + 1)
+      000231 C0 01            [24] 1072 	push	ar1
+      000233 C0 00            [24] 1073 	push	ar0
+      000235 12r00r00         [24] 1074 	lcall	__modsint
+      000238 AE 82            [24] 1075 	mov	r6, dpl
+      00023A AF 83            [24] 1076 	mov	r7, dph
+      00023C D0 00            [24] 1077 	pop	ar0
+      00023E D0 01            [24] 1078 	pop	ar1
+      000240 D0 02            [24] 1079 	pop	ar2
+      000242 D0 03            [24] 1080 	pop	ar3
+      000244 D0 04            [24] 1081 	pop	ar4
+      000246 D0 05            [24] 1082 	pop	ar5
+      000248 EE               [12] 1083 	mov	a,r6
+      000249 24r00            [12] 1084 	add	a, #_u8segments
+      00024B F5*09            [12] 1085 	mov	_pt6961_setNumberFade_sloc0_1_0,a
+      00024D EF               [12] 1086 	mov	a,r7
+      00024E 34s00            [12] 1087 	addc	a, #(_u8segments >> 8)
+      000250 F5*0A            [12] 1088 	mov	(_pt6961_setNumberFade_sloc0_1_0 + 1),a
+      000252 75*07 00         [24] 1089 	mov	_pt6961_setNumberFade_i_20000_209,#0x00
+      000255                       1090 00142$:
+      000255 74 EC            [12] 1091 	mov	a,#0x100 - 0x14
+      000257 25*07            [12] 1092 	add	a,_pt6961_setNumberFade_i_20000_209
+      000259 50 03            [24] 1093 	jnc	00274$
+      00025B 02r04r84         [24] 1094 	ljmp	00105$
+      00025E                       1095 00274$:
+                                   1096 ;	/Users/oliver/code/c/Clock_n76e003/firmware/003Clock/PT6961.c:87: for(uint8_t j=0; j<20; j++)
+      00025E 75*08 00         [24] 1097 	mov	_pt6961_setNumberFade_j_40000_211,#0x00
+      000261                       1098 00139$:
+      000261 74 EC            [12] 1099 	mov	a,#0x100 - 0x14
+      000263 25*08            [12] 1100 	add	a,_pt6961_setNumberFade_j_40000_211
+      000265 50 03            [24] 1101 	jnc	00275$
+      000267 02r04r7F         [24] 1102 	ljmp	00143$
+      00026A                       1103 00275$:
+                                   1104 ;	/Users/oliver/code/c/Clock_n76e003/firmware/003Clock/PT6961.c:89: if (i>=j)
+      00026A C3               [12] 1105 	clr	c
+      00026B E5*07            [12] 1106 	mov	a,_pt6961_setNumberFade_i_20000_209
+      00026D 95*08            [12] 1107 	subb	a,_pt6961_setNumberFade_j_40000_211
+      00026F 50 03            [24] 1108 	jnc	00276$
+      000271 02r03r3E         [24] 1109 	ljmp	00102$
+      000274                       1110 00276$:
+                                   1111 ;	/Users/oliver/code/c/Clock_n76e003/firmware/003Clock/PT6961.c:91: pt6961_writeCommand(0xC0);
+      000274 75 82 C0         [24] 1112 	mov	dpl, #0xc0
+      000277 C0 05            [24] 1113 	push	ar5
+      000279 C0 04            [24] 1114 	push	ar4
+      00027B C0 03            [24] 1115 	push	ar3
+      00027D C0 02            [24] 1116 	push	ar2
+      00027F C0 01            [24] 1117 	push	ar1
+      000281 C0 00            [24] 1118 	push	ar0
+      000283 12r00r19         [24] 1119 	lcall	_pt6961_writeCommand
+      000286 D0 00            [24] 1120 	pop	ar0
+      000288 D0 01            [24] 1121 	pop	ar1
+      00028A D0 02            [24] 1122 	pop	ar2
+      00028C D0 03            [24] 1123 	pop	ar3
+      00028E D0 04            [24] 1124 	pop	ar4
+      000290 D0 05            [24] 1125 	pop	ar5
+                                   1126 ;	/Users/oliver/code/c/Clock_n76e003/firmware/003Clock/PT6961.c:92: pt6961_writeByte(u8segments[number / 1000] | (u8colonOn << 7));
+      000292 8C 82            [24] 1127 	mov	dpl,r4
+      000294 8D 83            [24] 1128 	mov	dph,r5
+      000296 E4               [12] 1129 	clr	a
+      000297 93               [24] 1130 	movc	a,@a+dptr
+      000298 FF               [12] 1131 	mov	r7,a
+      000299 E5*04            [12] 1132 	mov	a,_pt6961_setNumberFade_PARM_2
+      00029B 03               [12] 1133 	rr	a
+      00029C 54 80            [12] 1134 	anl	a,#0x80
+      00029E FE               [12] 1135 	mov	r6,a
+      00029F 4F               [12] 1136 	orl	a,r7
+      0002A0 F5 F5            [12] 1137 	mov	_SPDR,a
+                                   1138 ;	/Users/oliver/code/c/Clock_n76e003/firmware/003Clock/PT6961.c:19: while (!(SPSR & 0x80)); // Wait until transfer is complete
+      0002A2                       1139 00106$:
+      0002A2 E5 F4            [12] 1140 	mov	a,_SPSR
+      0002A4 30 E7 FB         [24] 1141 	jnb	acc.7,00106$
+                                   1142 ;	/Users/oliver/code/c/Clock_n76e003/firmware/003Clock/PT6961.c:20: SPSR &= 0x7F; // Clear SPIF
+      0002A7 53 F4 7F         [24] 1143 	anl	_SPSR,#0x7f
+                                   1144 ;	/Users/oliver/code/c/Clock_n76e003/firmware/003Clock/PT6961.c:93: pt6961_writeCommand(0xC2);
+      0002AA 75 82 C2         [24] 1145 	mov	dpl, #0xc2
+      0002AD C0 06            [24] 1146 	push	ar6
+      0002AF C0 05            [24] 1147 	push	ar5
+      0002B1 C0 04            [24] 1148 	push	ar4
+      0002B3 C0 03            [24] 1149 	push	ar3
+      0002B5 C0 02            [24] 1150 	push	ar2
+      0002B7 C0 01            [24] 1151 	push	ar1
+      0002B9 C0 00            [24] 1152 	push	ar0
+      0002BB 12r00r19         [24] 1153 	lcall	_pt6961_writeCommand
+      0002BE D0 00            [24] 1154 	pop	ar0
+      0002C0 D0 01            [24] 1155 	pop	ar1
+      0002C2 D0 02            [24] 1156 	pop	ar2
+      0002C4 D0 03            [24] 1157 	pop	ar3
+      0002C6 D0 04            [24] 1158 	pop	ar4
+      0002C8 D0 05            [24] 1159 	pop	ar5
+      0002CA D0 06            [24] 1160 	pop	ar6
+                                   1161 ;	/Users/oliver/code/c/Clock_n76e003/firmware/003Clock/PT6961.c:94: pt6961_writeByte(u8segments[number / 100 % 10] | (u8colonOn << 7));
+      0002CC 8A 82            [24] 1162 	mov	dpl,r2
+      0002CE 8B 83            [24] 1163 	mov	dph,r3
+      0002D0 E4               [12] 1164 	clr	a
+      0002D1 93               [24] 1165 	movc	a,@a+dptr
+      0002D2 4E               [12] 1166 	orl	a,r6
+      0002D3 F5 F5            [12] 1167 	mov	_SPDR,a
+                                   1168 ;	/Users/oliver/code/c/Clock_n76e003/firmware/003Clock/PT6961.c:19: while (!(SPSR & 0x80)); // Wait until transfer is complete
+      0002D5                       1169 00110$:
+      0002D5 E5 F4            [12] 1170 	mov	a,_SPSR
+      0002D7 30 E7 FB         [24] 1171 	jnb	acc.7,00110$
+                                   1172 ;	/Users/oliver/code/c/Clock_n76e003/firmware/003Clock/PT6961.c:20: SPSR &= 0x7F; // Clear SPIF
+      0002DA 53 F4 7F         [24] 1173 	anl	_SPSR,#0x7f
+                                   1174 ;	/Users/oliver/code/c/Clock_n76e003/firmware/003Clock/PT6961.c:95: pt6961_writeCommand(0xC4);
+      0002DD 75 82 C4         [24] 1175 	mov	dpl, #0xc4
+      0002E0 C0 05            [24] 1176 	push	ar5
+      0002E2 C0 04            [24] 1177 	push	ar4
+      0002E4 C0 03            [24] 1178 	push	ar3
+      0002E6 C0 02            [24] 1179 	push	ar2
+      0002E8 C0 01            [24] 1180 	push	ar1
+      0002EA C0 00            [24] 1181 	push	ar0
+      0002EC 12r00r19         [24] 1182 	lcall	_pt6961_writeCommand
+      0002EF D0 00            [24] 1183 	pop	ar0
+      0002F1 D0 01            [24] 1184 	pop	ar1
+      0002F3 D0 02            [24] 1185 	pop	ar2
+      0002F5 D0 03            [24] 1186 	pop	ar3
+      0002F7 D0 04            [24] 1187 	pop	ar4
+      0002F9 D0 05            [24] 1188 	pop	ar5
+                                   1189 ;	/Users/oliver/code/c/Clock_n76e003/firmware/003Clock/PT6961.c:96: pt6961_writeByte(u8segments[number / 10 % 10]);
+      0002FB 88 82            [24] 1190 	mov	dpl,r0
+      0002FD 89 83            [24] 1191 	mov	dph,r1
+      0002FF E4               [12] 1192 	clr	a
+      000300 93               [24] 1193 	movc	a,@a+dptr
+      000301 F5 F5            [12] 1194 	mov	_SPDR,a
+                                   1195 ;	/Users/oliver/code/c/Clock_n76e003/firmware/003Clock/PT6961.c:19: while (!(SPSR & 0x80)); // Wait until transfer is complete
+      000303                       1196 00114$:
+      000303 E5 F4            [12] 1197 	mov	a,_SPSR
+      000305 30 E7 FB         [24] 1198 	jnb	acc.7,00114$
+                                   1199 ;	/Users/oliver/code/c/Clock_n76e003/firmware/003Clock/PT6961.c:20: SPSR &= 0x7F; // Clear SPIF
+      000308 53 F4 7F         [24] 1200 	anl	_SPSR,#0x7f
+                                   1201 ;	/Users/oliver/code/c/Clock_n76e003/firmware/003Clock/PT6961.c:97: pt6961_writeCommand(0xC6);
+      00030B 75 82 C6         [24] 1202 	mov	dpl, #0xc6
+      00030E C0 05            [24] 1203 	push	ar5
+      000310 C0 04            [24] 1204 	push	ar4
+      000312 C0 03            [24] 1205 	push	ar3
+      000314 C0 02            [24] 1206 	push	ar2
+      000316 C0 01            [24] 1207 	push	ar1
+      000318 C0 00            [24] 1208 	push	ar0
+      00031A 12r00r19         [24] 1209 	lcall	_pt6961_writeCommand
+      00031D D0 00            [24] 1210 	pop	ar0
+      00031F D0 01            [24] 1211 	pop	ar1
+      000321 D0 02            [24] 1212 	pop	ar2
+      000323 D0 03            [24] 1213 	pop	ar3
+      000325 D0 04            [24] 1214 	pop	ar4
+      000327 D0 05            [24] 1215 	pop	ar5
+                                   1216 ;	/Users/oliver/code/c/Clock_n76e003/firmware/003Clock/PT6961.c:98: pt6961_writeByte(u8segments[number % 10]);
+      000329 85*09 82         [24] 1217 	mov	dpl,_pt6961_setNumberFade_sloc0_1_0
+      00032C 85*0A 83         [24] 1218 	mov	dph,(_pt6961_setNumberFade_sloc0_1_0 + 1)
+      00032F E4               [12] 1219 	clr	a
+      000330 93               [24] 1220 	movc	a,@a+dptr
+      000331 F5 F5            [12] 1221 	mov	_SPDR,a
+                                   1222 ;	/Users/oliver/code/c/Clock_n76e003/firmware/003Clock/PT6961.c:19: while (!(SPSR & 0x80)); // Wait until transfer is complete
+      000333                       1223 00118$:
+      000333 E5 F4            [12] 1224 	mov	a,_SPSR
+      000335 30 E7 FB         [24] 1225 	jnb	acc.7,00118$
+                                   1226 ;	/Users/oliver/code/c/Clock_n76e003/firmware/003Clock/PT6961.c:20: SPSR &= 0x7F; // Clear SPIF
+      000338 53 F4 7F         [24] 1227 	anl	_SPSR,#0x7f
+                                   1228 ;	/Users/oliver/code/c/Clock_n76e003/firmware/003Clock/PT6961.c:98: pt6961_writeByte(u8segments[number % 10]);
+      00033B 02r04r7A         [24] 1229 	ljmp	00140$
+      00033E                       1230 00102$:
+                                   1231 ;	/Users/oliver/code/c/Clock_n76e003/firmware/003Clock/PT6961.c:102: pt6961_writeCommand(0xC0);
+      00033E 75 82 C0         [24] 1232 	mov	dpl, #0xc0
+      000341 C0 05            [24] 1233 	push	ar5
+      000343 C0 04            [24] 1234 	push	ar4
+      000345 C0 03            [24] 1235 	push	ar3
+      000347 C0 02            [24] 1236 	push	ar2
+      000349 C0 01            [24] 1237 	push	ar1
+      00034B C0 00            [24] 1238 	push	ar0
+      00034D 12r00r19         [24] 1239 	lcall	_pt6961_writeCommand
+                                   1240 ;	/Users/oliver/code/c/Clock_n76e003/firmware/003Clock/PT6961.c:103: pt6961_writeByte(u8segments[lastNumber / 1000] | (lastColon << 7));
+      000350 75*00 E8         [24] 1241 	mov	__divsint_PARM_2,#0xe8
+      000353 75*01 03         [24] 1242 	mov	(__divsint_PARM_2 + 1),#0x03
+      000356 85*01 82         [24] 1243 	mov	dpl, _pt6961_setNumberFade_lastNumber_10000_208
+      000359 85*02 83         [24] 1244 	mov	dph, (_pt6961_setNumberFade_lastNumber_10000_208 + 1)
+      00035C 12r00r00         [24] 1245 	lcall	__divsint
+      00035F AE 82            [24] 1246 	mov	r6, dpl
+      000361 AF 83            [24] 1247 	mov	r7, dph
+      000363 D0 00            [24] 1248 	pop	ar0
+      000365 D0 01            [24] 1249 	pop	ar1
+      000367 D0 02            [24] 1250 	pop	ar2
+      000369 D0 03            [24] 1251 	pop	ar3
+      00036B D0 04            [24] 1252 	pop	ar4
+      00036D D0 05            [24] 1253 	pop	ar5
+      00036F EE               [12] 1254 	mov	a,r6
+      000370 24r00            [12] 1255 	add	a, #_u8segments
+      000372 F5 82            [12] 1256 	mov	dpl,a
+      000374 EF               [12] 1257 	mov	a,r7
+      000375 34s00            [12] 1258 	addc	a, #(_u8segments >> 8)
+      000377 F5 83            [12] 1259 	mov	dph,a
+      000379 E4               [12] 1260 	clr	a
+      00037A 93               [24] 1261 	movc	a,@a+dptr
+      00037B FF               [12] 1262 	mov	r7,a
+      00037C E5*03            [12] 1263 	mov	a,_pt6961_setNumberFade_lastColon_10000_208
+      00037E 03               [12] 1264 	rr	a
+      00037F 54 80            [12] 1265 	anl	a,#0x80
+      000381 4F               [12] 1266 	orl	a,r7
+      000382 F5 F5            [12] 1267 	mov	_SPDR,a
+                                   1268 ;	/Users/oliver/code/c/Clock_n76e003/firmware/003Clock/PT6961.c:19: while (!(SPSR & 0x80)); // Wait until transfer is complete
+      000384                       1269 00122$:
+      000384 E5 F4            [12] 1270 	mov	a,_SPSR
+      000386 30 E7 FB         [24] 1271 	jnb	acc.7,00122$
+                                   1272 ;	/Users/oliver/code/c/Clock_n76e003/firmware/003Clock/PT6961.c:20: SPSR &= 0x7F; // Clear SPIF
+      000389 53 F4 7F         [24] 1273 	anl	_SPSR,#0x7f
+                                   1274 ;	/Users/oliver/code/c/Clock_n76e003/firmware/003Clock/PT6961.c:104: pt6961_writeCommand(0xC2);
+      00038C 75 82 C2         [24] 1275 	mov	dpl, #0xc2
+      00038F C0 05            [24] 1276 	push	ar5
+      000391 C0 04            [24] 1277 	push	ar4
+      000393 C0 03            [24] 1278 	push	ar3
+      000395 C0 02            [24] 1279 	push	ar2
+      000397 C0 01            [24] 1280 	push	ar1
+      000399 C0 00            [24] 1281 	push	ar0
+      00039B 12r00r19         [24] 1282 	lcall	_pt6961_writeCommand
+                                   1283 ;	/Users/oliver/code/c/Clock_n76e003/firmware/003Clock/PT6961.c:105: pt6961_writeByte(u8segments[lastNumber / 100 % 10] | (lastColon << 7));
+      00039E 75*00 64         [24] 1284 	mov	__divsint_PARM_2,#0x64
+      0003A1 75*01 00         [24] 1285 	mov	(__divsint_PARM_2 + 1),#0x00
+      0003A4 85*01 82         [24] 1286 	mov	dpl, _pt6961_setNumberFade_lastNumber_10000_208
+      0003A7 85*02 83         [24] 1287 	mov	dph, (_pt6961_setNumberFade_lastNumber_10000_208 + 1)
+      0003AA 12r00r00         [24] 1288 	lcall	__divsint
+      0003AD 75*00 0A         [24] 1289 	mov	__modsint_PARM_2,#0x0a
+      0003B0 75*01 00         [24] 1290 	mov	(__modsint_PARM_2 + 1),#0x00
+      0003B3 12r00r00         [24] 1291 	lcall	__modsint
+      0003B6 AE 82            [24] 1292 	mov	r6, dpl
+      0003B8 AF 83            [24] 1293 	mov	r7, dph
+      0003BA D0 00            [24] 1294 	pop	ar0
+      0003BC D0 01            [24] 1295 	pop	ar1
+      0003BE D0 02            [24] 1296 	pop	ar2
+      0003C0 D0 03            [24] 1297 	pop	ar3
+      0003C2 D0 04            [24] 1298 	pop	ar4
+      0003C4 D0 05            [24] 1299 	pop	ar5
+      0003C6 EE               [12] 1300 	mov	a,r6
+      0003C7 24r00            [12] 1301 	add	a, #_u8segments
+      0003C9 F5 82            [12] 1302 	mov	dpl,a
+      0003CB EF               [12] 1303 	mov	a,r7
+      0003CC 34s00            [12] 1304 	addc	a, #(_u8segments >> 8)
+      0003CE F5 83            [12] 1305 	mov	dph,a
+      0003D0 E4               [12] 1306 	clr	a
+      0003D1 93               [24] 1307 	movc	a,@a+dptr
+      0003D2 FF               [12] 1308 	mov	r7,a
+      0003D3 E5*03            [12] 1309 	mov	a,_pt6961_setNumberFade_lastColon_10000_208
+      0003D5 03               [12] 1310 	rr	a
+      0003D6 54 80            [12] 1311 	anl	a,#0x80
+      0003D8 4F               [12] 1312 	orl	a,r7
+      0003D9 F5 F5            [12] 1313 	mov	_SPDR,a
+                                   1314 ;	/Users/oliver/code/c/Clock_n76e003/firmware/003Clock/PT6961.c:19: while (!(SPSR & 0x80)); // Wait until transfer is complete
+      0003DB                       1315 00126$:
+      0003DB E5 F4            [12] 1316 	mov	a,_SPSR
+      0003DD 30 E7 FB         [24] 1317 	jnb	acc.7,00126$
+                                   1318 ;	/Users/oliver/code/c/Clock_n76e003/firmware/003Clock/PT6961.c:20: SPSR &= 0x7F; // Clear SPIF
+      0003E0 53 F4 7F         [24] 1319 	anl	_SPSR,#0x7f
+                                   1320 ;	/Users/oliver/code/c/Clock_n76e003/firmware/003Clock/PT6961.c:106: pt6961_writeCommand(0xC4);
+      0003E3 75 82 C4         [24] 1321 	mov	dpl, #0xc4
+      0003E6 C0 05            [24] 1322 	push	ar5
+      0003E8 C0 04            [24] 1323 	push	ar4
+      0003EA C0 03            [24] 1324 	push	ar3
+      0003EC C0 02            [24] 1325 	push	ar2
+      0003EE C0 01            [24] 1326 	push	ar1
+      0003F0 C0 00            [24] 1327 	push	ar0
+      0003F2 12r00r19         [24] 1328 	lcall	_pt6961_writeCommand
+                                   1329 ;	/Users/oliver/code/c/Clock_n76e003/firmware/003Clock/PT6961.c:107: pt6961_writeByte(u8segments[lastNumber / 10 % 10]);
+      0003F5 75*00 0A         [24] 1330 	mov	__divsint_PARM_2,#0x0a
+      0003F8 75*01 00         [24] 1331 	mov	(__divsint_PARM_2 + 1),#0x00
+      0003FB 85*01 82         [24] 1332 	mov	dpl, _pt6961_setNumberFade_lastNumber_10000_208
+      0003FE 85*02 83         [24] 1333 	mov	dph, (_pt6961_setNumberFade_lastNumber_10000_208 + 1)
+      000401 12r00r00         [24] 1334 	lcall	__divsint
+      000404 75*00 0A         [24] 1335 	mov	__modsint_PARM_2,#0x0a
+      000407 75*01 00         [24] 1336 	mov	(__modsint_PARM_2 + 1),#0x00
+      00040A 12r00r00         [24] 1337 	lcall	__modsint
+      00040D AE 82            [24] 1338 	mov	r6, dpl
+      00040F AF 83            [24] 1339 	mov	r7, dph
+      000411 D0 00            [24] 1340 	pop	ar0
+      000413 D0 01            [24] 1341 	pop	ar1
+      000415 D0 02            [24] 1342 	pop	ar2
+      000417 D0 03            [24] 1343 	pop	ar3
+      000419 D0 04            [24] 1344 	pop	ar4
+      00041B D0 05            [24] 1345 	pop	ar5
+      00041D EE               [12] 1346 	mov	a,r6
+      00041E 24r00            [12] 1347 	add	a, #_u8segments
+      000420 F5 82            [12] 1348 	mov	dpl,a
+      000422 EF               [12] 1349 	mov	a,r7
+      000423 34s00            [12] 1350 	addc	a, #(_u8segments >> 8)
+      000425 F5 83            [12] 1351 	mov	dph,a
+      000427 E4               [12] 1352 	clr	a
+      000428 93               [24] 1353 	movc	a,@a+dptr
+      000429 F5 F5            [12] 1354 	mov	_SPDR,a
+                                   1355 ;	/Users/oliver/code/c/Clock_n76e003/firmware/003Clock/PT6961.c:19: while (!(SPSR & 0x80)); // Wait until transfer is complete
+      00042B                       1356 00130$:
+      00042B E5 F4            [12] 1357 	mov	a,_SPSR
+      00042D 30 E7 FB         [24] 1358 	jnb	acc.7,00130$
+                                   1359 ;	/Users/oliver/code/c/Clock_n76e003/firmware/003Clock/PT6961.c:20: SPSR &= 0x7F; // Clear SPIF
+      000430 53 F4 7F         [24] 1360 	anl	_SPSR,#0x7f
+                                   1361 ;	/Users/oliver/code/c/Clock_n76e003/firmware/003Clock/PT6961.c:108: pt6961_writeCommand(0xC6);
+      000433 75 82 C6         [24] 1362 	mov	dpl, #0xc6
+      000436 C0 05            [24] 1363 	push	ar5
+      000438 C0 04            [24] 1364 	push	ar4
+      00043A C0 03            [24] 1365 	push	ar3
+      00043C C0 02            [24] 1366 	push	ar2
+      00043E C0 01            [24] 1367 	push	ar1
+      000440 C0 00            [24] 1368 	push	ar0
+      000442 12r00r19         [24] 1369 	lcall	_pt6961_writeCommand
+                                   1370 ;	/Users/oliver/code/c/Clock_n76e003/firmware/003Clock/PT6961.c:109: pt6961_writeByte(u8segments[lastNumber % 10]);
+      000445 75*00 0A         [24] 1371 	mov	__modsint_PARM_2,#0x0a
+      000448 75*01 00         [24] 1372 	mov	(__modsint_PARM_2 + 1),#0x00
+      00044B 85*01 82         [24] 1373 	mov	dpl, _pt6961_setNumberFade_lastNumber_10000_208
+      00044E 85*02 83         [24] 1374 	mov	dph, (_pt6961_setNumberFade_lastNumber_10000_208 + 1)
+      000451 12r00r00         [24] 1375 	lcall	__modsint
+      000454 AE 82            [24] 1376 	mov	r6, dpl
+      000456 AF 83            [24] 1377 	mov	r7, dph
+      000458 D0 00            [24] 1378 	pop	ar0
+      00045A D0 01            [24] 1379 	pop	ar1
+      00045C D0 02            [24] 1380 	pop	ar2
+      00045E D0 03            [24] 1381 	pop	ar3
+      000460 D0 04            [24] 1382 	pop	ar4
+      000462 D0 05            [24] 1383 	pop	ar5
+      000464 EE               [12] 1384 	mov	a,r6
+      000465 24r00            [12] 1385 	add	a, #_u8segments
+      000467 F5 82            [12] 1386 	mov	dpl,a
+      000469 EF               [12] 1387 	mov	a,r7
+      00046A 34s00            [12] 1388 	addc	a, #(_u8segments >> 8)
+      00046C F5 83            [12] 1389 	mov	dph,a
+      00046E E4               [12] 1390 	clr	a
+      00046F 93               [24] 1391 	movc	a,@a+dptr
+      000470 F5 F5            [12] 1392 	mov	_SPDR,a
+                                   1393 ;	/Users/oliver/code/c/Clock_n76e003/firmware/003Clock/PT6961.c:19: while (!(SPSR & 0x80)); // Wait until transfer is complete
+      000472                       1394 00134$:
+      000472 E5 F4            [12] 1395 	mov	a,_SPSR
+      000474 30 E7 FB         [24] 1396 	jnb	acc.7,00134$
+                                   1397 ;	/Users/oliver/code/c/Clock_n76e003/firmware/003Clock/PT6961.c:20: SPSR &= 0x7F; // Clear SPIF
+      000477 53 F4 7F         [24] 1398 	anl	_SPSR,#0x7f
+                                   1399 ;	/Users/oliver/code/c/Clock_n76e003/firmware/003Clock/PT6961.c:109: pt6961_writeByte(u8segments[lastNumber % 10]);
+      00047A                       1400 00140$:
+                                   1401 ;	/Users/oliver/code/c/Clock_n76e003/firmware/003Clock/PT6961.c:87: for(uint8_t j=0; j<20; j++)
+      00047A 05*08            [12] 1402 	inc	_pt6961_setNumberFade_j_40000_211
+      00047C 02r02r61         [24] 1403 	ljmp	00139$
+      00047F                       1404 00143$:
+                                   1405 ;	/Users/oliver/code/c/Clock_n76e003/firmware/003Clock/PT6961.c:85: for(uint8_t i=0; i<20; i++)
+      00047F 05*07            [12] 1406 	inc	_pt6961_setNumberFade_i_20000_209
+      000481 02r02r55         [24] 1407 	ljmp	00142$
+      000484                       1408 00105$:
+                                   1409 ;	/Users/oliver/code/c/Clock_n76e003/firmware/003Clock/PT6961.c:114: lastNumber = number;
+      000484 85*05*01         [24] 1410 	mov	_pt6961_setNumberFade_lastNumber_10000_208,_pt6961_setNumberFade_number_10000_207
+      000487 85*06*02         [24] 1411 	mov	(_pt6961_setNumberFade_lastNumber_10000_208 + 1),(_pt6961_setNumberFade_number_10000_207 + 1)
+                                   1412 ;	/Users/oliver/code/c/Clock_n76e003/firmware/003Clock/PT6961.c:115: lastColon = u8colonOn;
+      00048A 85*04*03         [24] 1413 	mov	_pt6961_setNumberFade_lastColon_10000_208,_pt6961_setNumberFade_PARM_2
+                                   1414 ;	/Users/oliver/code/c/Clock_n76e003/firmware/003Clock/PT6961.c:116: }
+      00048D 22               [24] 1415 	ret
+                                   1416 	.area CSEG    (CODE)
+                                   1417 	.area CONST   (CODE)
+      000000                       1418 _u8segments:
+      000000 3F                    1419 	.db #0x3f	; 63
+      000001 06                    1420 	.db #0x06	; 6
+      000002 5B                    1421 	.db #0x5b	; 91
+      000003 4F                    1422 	.db #0x4f	; 79	'O'
+      000004 66                    1423 	.db #0x66	; 102	'f'
+      000005 6D                    1424 	.db #0x6d	; 109	'm'
+      000006 7D                    1425 	.db #0x7d	; 125
+      000007 07                    1426 	.db #0x07	; 7
+      000008 7F                    1427 	.db #0x7f	; 127
+      000009 67                    1428 	.db #0x67	; 103	'g'
+      00000A 77                    1429 	.db #0x77	; 119	'w'
+      00000B 7C                    1430 	.db #0x7c	; 124
+      00000C 58                    1431 	.db #0x58	; 88	'X'
+      00000D 5E                    1432 	.db #0x5e	; 94
+      00000E 79                    1433 	.db #0x79	; 121	'y'
+      00000F 71                    1434 	.db #0x71	; 113	'q'
+      000010 80                    1435 	.db #0x80	; 128
+      000011 00                    1436 	.db #0x00	; 0
+                                   1437 	.area XINIT   (CODE)
+                                   1438 	.area CABS    (ABS,CODE)
