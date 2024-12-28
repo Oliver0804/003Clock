@@ -27,7 +27,7 @@ if [ ! -d "$SRC_DIR" ]; then
 fi
 
 # 設定基礎路徑為絕對路徑
-BASE=$(realpath ../N76E003_BSP)
+BASE=$(realpath ./N76E003_BSP)
 
 # 檢查 N76E003_BSP 是否存在
 if [ ! -d "$BASE" ]; then
